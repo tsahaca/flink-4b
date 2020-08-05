@@ -29,7 +29,9 @@ public class KafkaPriceAssignment extends ExerciseBase {
 
         try {
             final ParameterTool params = ParameterTool.fromArgs(args);
-            KAFKA_ADDRESS = params.getRequired("KAFKA_ADDRESS");
+            //KAFKA_ADDRESS = params.getRequired("KAFKA_ADDRESS");
+            KAFKA_ADDRESS = params.has("KAFKA_ADDRESS") ? params.get("KAFKA_ADDRESS") : IConstants.DEFASULT_KAFKA_ADDRESS;
+
             KAFKA_GROUP = params.has("KAFKA_GROUP") ? params.get("KAFKA_GROUP") : "";
 
             IN_PRICE = params.has("IN_PRICE") ? params.get("IN_PRICE") : "price";

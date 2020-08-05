@@ -9,6 +9,8 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer010;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.training.assignments.domain.*;
+import org.apache.flink.training.assignments.functions.PriceEnrichmentByAct;
+import org.apache.flink.training.assignments.functions.PriceEnrichmentBySymbol;
 import org.apache.flink.training.assignments.keys.*;
 import org.apache.flink.training.assignments.serializers.*;
 import org.apache.flink.training.assignments.sinks.LogSink;
@@ -56,46 +58,67 @@ public class OrderPipeline {
     public void execute() throws Exception{
         // set up streaming execution environment
         var env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.getConfig().setAutoWatermarkInterval(10000);
-        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
+       // env.getConfig().setAutoWatermarkInterval(10000);
+       // env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         //env.setParallelism(ExerciseBase.parallelism);
 
         /**
          * Create the Price Stream from Kafka and keyBy cusip
          */
-         /**
-        var priceStream = env.addSource(readFromKafka(IN_PRICE,new PriceDeserializationSchema()))
+
+        DataStream<Price> priceStream = env.addSource(readPriceFromKafka(IN_PRICE,new PriceDeserializationSchema()))
                 .name("kfkaPriceReader").uid("kfkaPriceReader")
                 .keyBy(price -> price.getCusip());
-         priceStream.addSink(new LogSink<>(LOG,
-                LogSink.LoggerEnum.INFO, "**** priceStream {}"));
-         */
+         //priceStream.addSink(new LogSink<>(LOG,
+           //     LogSink.LoggerEnum.INFO, "**** priceStream {}"));
 
-        /**
-        var positionsByAct = env.addSource(readFromKafka(IN_POSITION_ACT,new PositionDeserializationSchema()))
+
+
+        DataStream<Position> positionsByAct = env.addSource(readPositionActFromKafka(IN_POSITION_ACT,new PositionDeserializationSchema()))
                 .name("kfkaPositionsByActReader").uid("kfkaPositionsByActReader")
                 .keyBy(position -> position.getCusip());
-        positionsByAct.addSink(new LogSink<>(LOG,
-                LogSink.LoggerEnum.INFO, "**** positionsByAct {}"));
-         */
+        //positionsByAct.addSink(new LogSink<>(LOG,
+         //       LogSink.LoggerEnum.INFO, "**** positionsByAct {}"));
 
-        var positionBySymbol = env.addSource(readFromKafka(IN_POSITION_SYMBOL,new PositionByCusipDeserializationSchema()))
-                .name("kfkaPriceReader").uid("kfkaPriceReader")
+        var positionBySymbol = env.addSource(readPositionSymbolFromKafka(IN_POSITION_SYMBOL,new PositionByCusipDeserializationSchema()))
+                .name("kfkaPositionsBySymbolReader").uid("kfkaPositionsBySymbolReader")
                 .keyBy(positionSymbol -> positionSymbol.getCusip());
-        positionBySymbol.addSink(new LogSink<>(LOG,
-                LogSink.LoggerEnum.INFO, "**** positionsBySymbol {}"));
+        //positionBySymbol.addSink(new LogSink<>(LOG,
+               //LogSink.LoggerEnum.INFO, "**** positionsBySymbol {}"));
 
-
-
+        var priceEnrichedPositions= positionsByAct
+                .connect(priceStream)
+                .flatMap(new PriceEnrichmentByAct())
+                .uid("PriceEnrichedPositionsByAct");
+        priceEnrichedPositions.addSink(new LogSink<>(LOG,
+                LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsByAct {}"));
 
         /**
-        var positionsByCusip = aggregatePositionsByCusip(aggregatedPositionsByAccount);
-        FlinkKafkaProducer010<Tuple2<String, List<Allocation>>> flinkKafkaProducerCusip = new FlinkKafkaProducer010<Tuple2<String, List<Allocation>>>(
-                KAFKA_ADDRESS, OUT_CUSIP, new CusipKeyedSerializationSchema(OUT_CUSIP));
-        positionsByCusip.addSink(flinkKafkaProducerCusip)
-                .name("PublishPositionByCusipToKafka")
-                .uid("PublishPositionByCusipToKafka");
+         * Publish the positions with Market Value By Act to kafka
+         * set account number as the key of Kafa Record
          */
+        FlinkKafkaProducer010<Position> flinkKafkaProducer = new FlinkKafkaProducer010<Position>(
+                KAFKA_ADDRESS, OUT_MV_ACT, new PositionKeyedSerializationSchema(OUT_MV_ACT));
+        priceEnrichedPositions.addSink(flinkKafkaProducer)
+                .name("PublishPositionMarketValueByActToKafka")
+                .uid("PublishPositionMarketValueByActToKafka");
+
+        var priceEnrichedPositionsBySymbol= positionBySymbol
+                .connect(priceStream)
+                .flatMap(new PriceEnrichmentBySymbol())
+                .uid("PriceEnrichedPositionsBySymbol");
+        priceEnrichedPositionsBySymbol.addSink(new LogSink<>(LOG,
+                LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsBySymbol {}"));
+
+        /**
+         * Publish the positions with Market Value By Symbol to kafka
+         * set account number as the key of Kafa Record
+         */
+        FlinkKafkaProducer010<PositionByCusip> flinkKafkaProducerBySmbol = new FlinkKafkaProducer010<PositionByCusip>(
+                KAFKA_ADDRESS, OUT_MV_SYMBOL, new SymbolKeyedSerializationSchema(OUT_MV_SYMBOL));
+        priceEnrichedPositionsBySymbol.addSink(flinkKafkaProducerBySmbol)
+                .name("PublishPositionMarketValueBySymbolToKafka")
+                .uid("PublishPositionMarketValueBySymbolToKafka");
 
 
 
@@ -107,7 +130,7 @@ public class OrderPipeline {
      * Read Block Orders from Kafka
      * @return
      */
-    private FlinkKafkaConsumer010<IncomingEvent> readFromKafka(final String topic,
+    private FlinkKafkaConsumer010<Price> readPriceFromKafka(final String topic,
                                                        final KafkaDeserializationSchema deserializationSchema){
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", KAFKA_ADDRESS);
@@ -115,81 +138,37 @@ public class OrderPipeline {
 
         // Create tbe Kafka Consumer here
         // Added KafkaDeserializationSchema
-        FlinkKafkaConsumer010<IncomingEvent> flinkKafkaConsumer = new FlinkKafkaConsumer010(topic,
+        FlinkKafkaConsumer010<Price> flinkKafkaConsumer = new FlinkKafkaConsumer010(topic,
                 deserializationSchema, props);
         return flinkKafkaConsumer;
     }
 
-    /**
-     * Split Orders by Account, sub-account and cusip
-     */
-    private DataStream<Position> splitOrderStream(final DataStream<Order> orderStream) {
-        DataStream<Position> splitOrderByAccountStream = orderStream
-                .flatMap(new OrderFlatMap())
-                /**
-                .assignTimestampsAndWatermarks(new OrderPeriodicWatermarkAssigner())
-                .name("TimestampWatermark").uid("TimestampWatermark")
-                .windowAll(TumblingEventTimeWindows.of(Time.seconds(10)))
-                .process(new SplitOrderWindowFunction())
-                 */
-                .name("splitOrderByAllocation")
-                .uid("splitOrderByAllocation");
-        return splitOrderByAccountStream;
+    private FlinkKafkaConsumer010<Position> readPositionActFromKafka(final String topic,
+                                                            final KafkaDeserializationSchema deserializationSchema){
+        Properties props = new Properties();
+        props.setProperty("bootstrap.servers", KAFKA_ADDRESS);
+        props.setProperty("group.id", KAFKA_GROUP);
+
+        // Create tbe Kafka Consumer here
+        // Added KafkaDeserializationSchema
+        FlinkKafkaConsumer010<Position> flinkKafkaConsumer = new FlinkKafkaConsumer010(topic,
+                deserializationSchema, props);
+        return flinkKafkaConsumer;
     }
 
-    /**
-     * Create positions
-     * @param splitOrderByAccountStream
-     * @return
-     */
-    private DataStream<Position> createPositions(final DataStream<Position> splitOrderByAccountStream){
-        /**
-         * Group the order by account, sub-account and cusip
-         */
-        var groupOrderByAccountWindowedStream=splitOrderByAccountStream
-                .assignTimestampsAndWatermarks(new PositionPeriodicWatermarkAssigner())
-                .name("TimestampWatermark").uid("TimestampWatermark")
-                .keyBy(new AccountPositionKeySelector())
-                .timeWindow(Time.seconds(10))
-                //.window(TumblingEventTimeWindows.of(Time.seconds(10)))
-                .sum("quantity")
-                .name("AggregatePositionByActSubActCusip")
-                .uid("AggregatePositionByActSubActCusip");
+    private FlinkKafkaConsumer010<PositionByCusip> readPositionSymbolFromKafka(final String topic,
+                                                                  final KafkaDeserializationSchema deserializationSchema){
+        Properties props = new Properties();
+        props.setProperty("bootstrap.servers", KAFKA_ADDRESS);
+        props.setProperty("group.id", KAFKA_GROUP);
 
-        /**
-         * Aggregate the position by account,sub-account and cusip
-         */
-        /**
-        var aggregatedPositionsByAccountStream = groupOrderByAccountWindowedStream
-                .apply(new PositionAggregationWindowFunction())
-                .name("AggregatePositionByActSubActCusip")
-                .uid("AggregatePositionByActSubActCusip");
-
-        return aggregatedPositionsByAccountStream;
-         */
-        return groupOrderByAccountWindowedStream;
+        // Create tbe Kafka Consumer here
+        // Added KafkaDeserializationSchema
+        FlinkKafkaConsumer010<PositionByCusip> flinkKafkaConsumer = new FlinkKafkaConsumer010(topic,
+                deserializationSchema, props);
+        return flinkKafkaConsumer;
     }
 
-    private DataStream<Tuple2<String, List<Allocation>>> aggregatePositionsByCusip(DataStream<Position> aggregatedPositionsByAccount){
-        var positionsByCusip = aggregatedPositionsByAccount
-                .keyBy(position -> position.getCusip())
-                .timeWindow(Time.seconds(10))
-                //.apply(new PositionByCusipWindowFunction())
-                .aggregate(new PositionAggregatorByCusip())
-                .name("AggregatePositionByCusip")
-                .uid("AggregatePositionByCusip");
-        return positionsByCusip;
-    }
 
-    private DataStream<PositionByCusip> aggregatePositionsBySymbol(DataStream<Position> aggregatedPositionsByAccount){
-        var positionsByCusip = aggregatedPositionsByAccount
-                .keyBy(position -> position.getCusip())
-                .timeWindow(Time.seconds(10))
-                //.apply(new PositionByCusipWindowFunction())
-                .aggregate(new PositionAggregatorBySymbol())
-                .name("AggregatePositionBySymbol")
-                .uid("AggregatePositionBySymbol");
-        return positionsByCusip;
-    }
 
 }

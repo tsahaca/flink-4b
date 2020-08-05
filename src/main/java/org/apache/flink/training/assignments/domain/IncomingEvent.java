@@ -18,6 +18,4 @@ public abstract class IncomingEvent implements Event {
     public String toString() {
         return "IncomingEvent(timestamp=" + this.getTimestamp() + ")";
     }
-
-    public abstract String getCusip();
 }

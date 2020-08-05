@@ -10,14 +10,9 @@ public interface IConstants {
 
     String OUT_MV_ACT="mvByAct";
     String OUT_MV_SYMBOL="mvBySymbol";
+    String DEFASULT_KAFKA_ADDRESS="--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092";
 
-    /*
-    String DEFAULT_OUT_TOPIC="positionsByAct";
-    String DEFAULT_OUT_SYMBOL="positionsBySymbol";
-    String DEFAULT_IN_TOPIC="in";
-    String DEFAULT_IN_PRICE="price";
-    String DEFAULT_OUT_MV_ACT="mvByAct";
-    String DEFAULT_OUT_MV_SYMBOL="mvBySymbol";
-    */
 
- }
+
+
+}
