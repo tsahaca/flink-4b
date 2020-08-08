@@ -24,7 +24,7 @@ public class PositionDeserializationSchema implements KafkaDeserializationSchema
     public Position deserialize(ConsumerRecord<byte[], byte[]> record) throws Exception {
         LOG.debug("*** deserializing Kafka ConsumerRecord with key={}", record.key());
         Position position = objectMapper.readValue(record.value(), Position.class);
-        position.setTimestamp(record.timestamp());
+        //position.setTimestamp(record.timestamp());
         LOG.debug("*** deserialized Kafka ConsumerRecord with key={}, position={}", record.key(), position);
         return position;
     }

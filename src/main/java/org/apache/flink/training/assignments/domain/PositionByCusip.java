@@ -18,6 +18,7 @@ public class PositionByCusip extends IncomingEvent {
     private int quantity;
     private double price;
     private double marketValue;
+    private String orderId;
 
     public PositionByCusip(final String csip,
                            final int qty){

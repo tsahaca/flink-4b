@@ -25,7 +25,7 @@ public class PositionByCusipDeserializationSchema implements KafkaDeserializatio
     public PositionByCusip deserialize(ConsumerRecord<byte[], byte[]> record) throws Exception {
         LOG.debug("*** deserializing Kafka ConsumerRecord with key={}", record.key());
         PositionByCusip position = objectMapper.readValue(record.value(), PositionByCusip.class);
-        position.setTimestamp(record.timestamp());
+        //position.setTimestamp(record.timestamp());
         LOG.debug("*** deserialized Kafka ConsumerRecord with key={}, positionByCusip={}", record.key(), position);
         return position;
     }

@@ -26,7 +26,7 @@ public class OrderKafkaDeserializationSchema implements KafkaDeserializationSche
     public Order deserialize(ConsumerRecord<byte[], byte[]> record) throws Exception {
         LOG.debug("*** deserializing Kafka ConsumerRecord with key={}", record.key());
         Order order = objectMapper.readValue(record.value(), Order.class);
-        order.setTimestamp(record.timestamp());
+        //order.setTimestamp(record.timestamp());
         LOG.debug("*** deserialized Kafka ConsumerRecord with key={}, orderId={}", record.key(), order.getOrderId());
         return order;
     }

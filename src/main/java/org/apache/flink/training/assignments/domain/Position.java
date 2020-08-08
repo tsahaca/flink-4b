@@ -24,6 +24,7 @@ public class Position extends IncomingEvent {
     private int quantity;
     private double price;
     private double marketValue;
+    private String orderId;
 
     @Override
     public byte[] key() {

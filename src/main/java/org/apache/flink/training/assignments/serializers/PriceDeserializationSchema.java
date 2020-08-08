@@ -25,7 +25,7 @@ public class PriceDeserializationSchema implements KafkaDeserializationSchema<Pr
     public Price deserialize(ConsumerRecord<byte[], byte[]> record) throws Exception {
         LOG.debug("*** deserializing Kafka ConsumerRecord with key={}", record.key());
         Price price = objectMapper.readValue(record.value(), Price.class);
-        price.setTimestamp(record.timestamp());
+       // price.setTimestamp(record.timestamp());
         LOG.debug("*** deserialized Kafka ConsumerRecord with key={}, priceId={}", record.key(), price.getId());
         return price;
     }

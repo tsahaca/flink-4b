@@ -1,5 +1,7 @@
 package org.apache.flink.training.assignments.orders;
 
+import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -89,9 +91,12 @@ public class OrderPipeline {
         var priceEnrichedPositions= positionsByAct
                 .connect(priceStream)
                 .flatMap(new PriceEnrichmentByAct())
-                .uid("PriceEnrichedPositionsByAct");
+                .name("AccountPositionEnrichmentWithPrice")
+                .uid("AccountPositionEnrichmentWithPrice");
+        /**
         priceEnrichedPositions.addSink(new LogSink<>(LOG,
                 LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsByAct {}"));
+         */
 
         /**
          * Publish the positions with Market Value By Act to kafka
@@ -103,12 +108,32 @@ public class OrderPipeline {
                 .name("PublishPositionMarketValueByActToKafka")
                 .uid("PublishPositionMarketValueByActToKafka");
 
+        var complianceResult = priceEnrichedPositions
+                .map(new MapFunction<Position, ComplianceResult>() {
+                    @Override
+                    public ComplianceResult map(Position value) throws Exception {
+                        ComplianceResult result = new ComplianceResult(value.getOrderId(),true,null);
+                        result.setTimestamp(System.currentTimeMillis());
+                        return  result;
+                    }})
+                .name("complianceResult")
+                .uid("complianceResult");
+
+        FlinkKafkaProducer010<ComplianceResult> flinkKafkaProducerCompResult = new FlinkKafkaProducer010<ComplianceResult>(
+                KAFKA_ADDRESS, "out", new ComplianceResultSerializationSchema("out"));
+        complianceResult.addSink(flinkKafkaProducerCompResult)
+                .name("PublishComplianceResultToKafka")
+                .uid("PublishComplianceResultToKafka");
+
         var priceEnrichedPositionsBySymbol= positionBySymbol
                 .connect(priceStream)
                 .flatMap(new PriceEnrichmentBySymbol())
-                .uid("PriceEnrichedPositionsBySymbol");
+                .name("SymbolPositionEnrichmentWithPrice")
+                .uid("SymbolPositionEnrichmentWithPrice");
+        /**
         priceEnrichedPositionsBySymbol.addSink(new LogSink<>(LOG,
                 LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsBySymbol {}"));
+         */
 
         /**
          * Publish the positions with Market Value By Symbol to kafka
@@ -130,7 +155,7 @@ public class OrderPipeline {
      * Read Block Orders from Kafka
      * @return
      */
-    private FlinkKafkaConsumer010<Price> readPriceFromKafka(final String topic,
+    public FlinkKafkaConsumer010<Price> readPriceFromKafka(final String topic,
                                                        final KafkaDeserializationSchema deserializationSchema){
         Properties props = new Properties();
         props.setProperty("bootstrap.servers", KAFKA_ADDRESS);
