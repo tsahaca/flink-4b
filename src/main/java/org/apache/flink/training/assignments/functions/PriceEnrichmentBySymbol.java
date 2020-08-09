@@ -46,6 +46,7 @@ public class PriceEnrichmentBySymbol extends RichCoFlatMapFunction<PositionByCus
 
     private PositionByCusip enrichPositionBySymbolWithPrice(final PositionByCusip position,
                                                   final double price){
+        /**
         final PositionByCusip enrichedPos = new PositionByCusip(
                 position.getCusip(),
                 position.getQuantity(),
@@ -53,5 +54,9 @@ public class PriceEnrichmentBySymbol extends RichCoFlatMapFunction<PositionByCus
                 position.getQuantity() * price, position.getOrderId());
         enrichedPos.setTimestamp(System.currentTimeMillis());
         return enrichedPos;
+         */
+        position.setPrice(price);
+        position.setMarketValue(position.getQuantity() * price);
+        return position;
     }
 }

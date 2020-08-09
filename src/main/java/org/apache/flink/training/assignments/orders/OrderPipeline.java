@@ -113,7 +113,7 @@ public class OrderPipeline {
                     @Override
                     public ComplianceResult map(Position value) throws Exception {
                         ComplianceResult result = new ComplianceResult(value.getOrderId(),true,null);
-                        result.setTimestamp(System.currentTimeMillis());
+                        result.setTimestamp(value.getTimestamp());
                         return  result;
                     }})
                 .name("complianceResult")

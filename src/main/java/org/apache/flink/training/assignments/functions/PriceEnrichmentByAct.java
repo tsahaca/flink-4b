@@ -42,8 +42,8 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
         }
     }
 
-    private Position enrichPositionByActWithPrice(final Position position,
-                                                  final double price){
+    private Position enrichPositionByActWithPrice(final Position position, final double price) {
+        /**
         final Position enrichedPos = new Position(position.getAccount(),
                 position.getSubAccount(),
                 position.getCusip(),
@@ -52,5 +52,9 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
                 position.getQuantity() * price, position.getOrderId());
         enrichedPos.setTimestamp(System.currentTimeMillis());
         return enrichedPos;
+        */
+        position.setPrice(price);
+        position.setMarketValue(position.getQuantity() * price);
+        return position;
     }
 }
