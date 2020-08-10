@@ -57,6 +57,7 @@ public class PriceEnrichmentBySymbol extends RichCoFlatMapFunction<PositionByCus
          */
         position.setPrice(price);
         position.setMarketValue(position.getQuantity() * price);
+        position.setTimestamp(System.currentTimeMillis());
         return position;
     }
 }
