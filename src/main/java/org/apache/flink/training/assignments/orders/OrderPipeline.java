@@ -6,11 +6,14 @@ import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer010;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.training.assignments.domain.*;
+import org.apache.flink.training.assignments.functions.PositionBySymbolMarketValueWindowFunction;
+import org.apache.flink.training.assignments.functions.PositionMarketValueWindowFunction;
 import org.apache.flink.training.assignments.functions.PriceEnrichmentByAct;
 import org.apache.flink.training.assignments.functions.PriceEnrichmentBySymbol;
 import org.apache.flink.training.assignments.keys.*;
@@ -60,21 +63,17 @@ public class OrderPipeline {
     public void execute() throws Exception{
         // set up streaming execution environment
         var env = StreamExecutionEnvironment.getExecutionEnvironment();
-       // env.getConfig().setAutoWatermarkInterval(10000);
-       // env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
-        //env.setParallelism(ExerciseBase.parallelism);
+        env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
+        env.disableOperatorChaining();
 
         /**
          * Create the Price Stream from Kafka and keyBy cusip
          */
-
         DataStream<Price> priceStream = env.addSource(readPriceFromKafka(IN_PRICE,new PriceDeserializationSchema()))
                 .name("kfkaPriceReader").uid("kfkaPriceReader")
                 .keyBy(price -> price.getCusip());
          //priceStream.addSink(new LogSink<>(LOG,
            //     LogSink.LoggerEnum.INFO, "**** priceStream {}"));
-
-
 
         DataStream<Position> positionsByAct = env.addSource(readPositionActFromKafka(IN_POSITION_ACT,new PositionDeserializationSchema()))
                 .name("kfkaPositionsByActReader").uid("kfkaPositionsByActReader")
@@ -91,8 +90,12 @@ public class OrderPipeline {
         var priceEnrichedPositions= positionsByAct
                 .connect(priceStream)
                 .flatMap(new PriceEnrichmentByAct())
-                .name("AccountPositionEnrichmentWithPrice")
-                .uid("AccountPositionEnrichmentWithPrice");
+                .name("AccountPositionEnrichment")
+                .uid("AccountPositionEnrichment")
+                .timeWindowAll(Time.minutes(1))
+                .apply(new PositionMarketValueWindowFunction())
+                .name("AccountPositionEnrichmentInOneMinWindow")
+                .uid("AccountPositionEnrichmentInOneMinWindow");
         /**
         priceEnrichedPositions.addSink(new LogSink<>(LOG,
                 LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsByAct {}"));
@@ -128,8 +131,13 @@ public class OrderPipeline {
         var priceEnrichedPositionsBySymbol= positionBySymbol
                 .connect(priceStream)
                 .flatMap(new PriceEnrichmentBySymbol())
-                .name("SymbolPositionEnrichmentWithPrice")
-                .uid("SymbolPositionEnrichmentWithPrice");
+                .name("SymbolPositionPriceEnrichment")
+                .uid("SymbolPositionPriceEnrichment")
+                .timeWindowAll(Time.minutes(1))
+                .apply(new PositionBySymbolMarketValueWindowFunction())
+                .name("SymbolPositionPriceEnrichmentInOneMinWindow")
+                .uid("SymbolPositionPriceEnrichmentInOneMinWindow");
+
         /**
         priceEnrichedPositionsBySymbol.addSink(new LogSink<>(LOG,
                 LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsBySymbol {}"));
@@ -144,8 +152,6 @@ public class OrderPipeline {
         priceEnrichedPositionsBySymbol.addSink(flinkKafkaProducerBySmbol)
                 .name("PublishPositionMarketValueBySymbolToKafka")
                 .uid("PublishPositionMarketValueBySymbolToKafka");
-
-
 
         // execute the transformation pipeline
         env.execute("kafkaPrice");
