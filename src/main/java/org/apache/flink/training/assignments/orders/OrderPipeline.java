@@ -92,7 +92,8 @@ public class OrderPipeline {
                 .flatMap(new PriceEnrichmentByAct())
                 .name("AccountPositionEnrichment")
                 .uid("AccountPositionEnrichment")
-                .timeWindowAll(Time.minutes(1))
+                .keyBy(position -> position.getCusip())
+                .timeWindow(Time.minutes(1))
                 .apply(new PositionMarketValueWindowFunction())
                 .name("AccountPositionEnrichmentInOneMinWindow")
                 .uid("AccountPositionEnrichmentInOneMinWindow");
@@ -133,7 +134,8 @@ public class OrderPipeline {
                 .flatMap(new PriceEnrichmentBySymbol())
                 .name("SymbolPositionPriceEnrichment")
                 .uid("SymbolPositionPriceEnrichment")
-                .timeWindowAll(Time.minutes(1))
+                .keyBy(positionByCusip -> positionByCusip.getCusip())
+                .timeWindow(Time.minutes(1))
                 .apply(new PositionBySymbolMarketValueWindowFunction())
                 .name("SymbolPositionPriceEnrichmentInOneMinWindow")
                 .uid("SymbolPositionPriceEnrichmentInOneMinWindow");
