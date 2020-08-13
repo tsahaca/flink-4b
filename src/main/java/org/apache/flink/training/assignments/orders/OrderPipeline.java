@@ -1,12 +1,9 @@
 package org.apache.flink.training.assignments.orders;
 
 import org.apache.flink.api.common.functions.MapFunction;
-import org.apache.flink.api.common.typeinfo.TypeInformation;
-import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer010;
@@ -16,14 +13,10 @@ import org.apache.flink.training.assignments.functions.PositionBySymbolMarketVal
 import org.apache.flink.training.assignments.functions.PositionMarketValueWindowFunction;
 import org.apache.flink.training.assignments.functions.PriceEnrichmentByAct;
 import org.apache.flink.training.assignments.functions.PriceEnrichmentBySymbol;
-import org.apache.flink.training.assignments.keys.*;
 import org.apache.flink.training.assignments.serializers.*;
 import org.apache.flink.training.assignments.sinks.LogSink;
-import org.apache.flink.training.assignments.watermarks.PositionPeriodicWatermarkAssigner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 

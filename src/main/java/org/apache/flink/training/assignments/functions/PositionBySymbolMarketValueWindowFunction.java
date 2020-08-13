@@ -14,7 +14,6 @@ public class PositionBySymbolMarketValueWindowFunction implements WindowFunction
             final Iterable<PositionByCusip> positions,
             final Collector<PositionByCusip> collector
     ) throws Exception {
-
         //The main counting bit for position quantity
         for (PositionByCusip position : positions
         ) {

@@ -14,7 +14,6 @@ public class PositionMarketValueWindowFunction implements  WindowFunction<Positi
             final Iterable<Position> positions,
             final Collector<Position> collector
     ) throws Exception {
-
         //The main counting bit for position quantity
         for (Position position : positions
         ) {
