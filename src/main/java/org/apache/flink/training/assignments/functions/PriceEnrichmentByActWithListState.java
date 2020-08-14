@@ -10,18 +10,16 @@ import org.apache.flink.training.assignments.domain.Position;
 import org.apache.flink.training.assignments.domain.Price;
 import org.apache.flink.util.Collector;
 
-import java.util.List;
 
-
-public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price, Position> {
+public class PriceEnrichmentByActWithListState extends RichCoFlatMapFunction<Position, Price, Position> {
     // keyed, managed state
-    private ValueState<Position> positionState;
+    ListState<Position> positionListState;
     private ValueState<Price> priceState;
 
     @Override
     public void open(Configuration config) {
-        positionState = getRuntimeContext().getState(new ValueStateDescriptor<>("saved Position", Position.class));
         priceState = getRuntimeContext().getState(new ValueStateDescriptor<>("saved Price", Price.class));
+        positionListState = getRuntimeContext().getListState((new ListStateDescriptor<>("saved Position List", Position.class)));
     }
 
     @Override
@@ -31,16 +29,19 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
             //priceState.clear();
             out.collect(enrichPositionByActWithPrice(position,price.getPrice().doubleValue()));
         } else {
-            positionState.update(position);
+            positionListState.add(position);
         }
     }
 
     @Override
     public void flatMap2(Price price, Collector<Position> out) throws Exception {
-        Position position = positionState.value();
-        if (position != null) {
-            positionState.clear();
-            out.collect(enrichPositionByActWithPrice(position,price.getPrice().doubleValue()));
+        Iterable<Position> positionList=positionListState.get();
+
+        if(positionList != null){
+            positionListState.clear();
+            for(Position pos: positionList){
+                out.collect(enrichPositionByActWithPrice(pos,price.getPrice().doubleValue()));
+            }
         } else {
             priceState.update(price);
         }
