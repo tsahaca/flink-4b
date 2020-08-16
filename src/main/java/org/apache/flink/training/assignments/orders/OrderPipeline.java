@@ -9,10 +9,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer010;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.training.assignments.domain.*;
-import org.apache.flink.training.assignments.functions.PositionBySymbolMarketValueWindowFunction;
-import org.apache.flink.training.assignments.functions.PositionMarketValueWindowFunction;
-import org.apache.flink.training.assignments.functions.PriceEnrichmentByAct;
-import org.apache.flink.training.assignments.functions.PriceEnrichmentBySymbol;
+import org.apache.flink.training.assignments.functions.*;
 import org.apache.flink.training.assignments.serializers.*;
 import org.apache.flink.training.assignments.sinks.LogSink;
 import org.slf4j.Logger;
@@ -64,18 +61,21 @@ public class OrderPipeline {
          */
         DataStream<Price> priceStream = env.addSource(readPriceFromKafka(IN_PRICE,new PriceDeserializationSchema()))
                 .name("kfkaPriceReader").uid("kfkaPriceReader")
+                .rebalance()
                 .keyBy(price -> price.getCusip());
          //priceStream.addSink(new LogSink<>(LOG,
            //     LogSink.LoggerEnum.INFO, "**** priceStream {}"));
 
         DataStream<Position> positionsByAct = env.addSource(readPositionActFromKafka(IN_POSITION_ACT,new PositionDeserializationSchema()))
                 .name("kfkaPositionsByActReader").uid("kfkaPositionsByActReader")
+                .rebalance()
                 .keyBy(position -> position.getCusip());
         //positionsByAct.addSink(new LogSink<>(LOG,
          //       LogSink.LoggerEnum.INFO, "**** positionsByAct {}"));
 
         var positionBySymbol = env.addSource(readPositionSymbolFromKafka(IN_POSITION_SYMBOL,new PositionByCusipDeserializationSchema()))
                 .name("kfkaPositionsBySymbolReader").uid("kfkaPositionsBySymbolReader")
+                .rebalance()
                 .keyBy(positionSymbol -> positionSymbol.getCusip());
         //positionBySymbol.addSink(new LogSink<>(LOG,
                //LogSink.LoggerEnum.INFO, "**** positionsBySymbol {}"));
@@ -83,6 +83,7 @@ public class OrderPipeline {
         var priceEnrichedPositions= positionsByAct
                 .connect(priceStream)
                 .flatMap(new PriceEnrichmentByAct())
+                //.flatMap(new PriceEnrichmentByActWithListState())
                 .name("AccountPositionEnrichment")
                 .uid("AccountPositionEnrichment")
                 .keyBy(position -> position.getCusip())

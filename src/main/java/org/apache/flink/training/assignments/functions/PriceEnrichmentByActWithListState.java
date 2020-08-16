@@ -13,8 +13,8 @@ import org.apache.flink.util.Collector;
 
 public class PriceEnrichmentByActWithListState extends RichCoFlatMapFunction<Position, Price, Position> {
     // keyed, managed state
-    ListState<Position> positionListState;
-    private ValueState<Price> priceState;
+    private  ListState<Position> positionListState;
+    private  ValueState<Price> priceState;
 
     @Override
     public void open(Configuration config) {
@@ -36,28 +36,23 @@ public class PriceEnrichmentByActWithListState extends RichCoFlatMapFunction<Pos
     @Override
     public void flatMap2(Price price, Collector<Position> out) throws Exception {
         Iterable<Position> positionList=positionListState.get();
+        priceState.update(price);
 
         if(positionList != null){
             positionListState.clear();
             for(Position pos: positionList){
                 out.collect(enrichPositionByActWithPrice(pos,price.getPrice().doubleValue()));
             }
-        } else {
-            priceState.update(price);
         }
+        /**
+        else {
+            priceState.update(price);
+        }**/
+
     }
 
     private Position enrichPositionByActWithPrice(final Position position, final double price) {
-        /**
-        final Position enrichedPos = new Position(position.getAccount(),
-                position.getSubAccount(),
-                position.getCusip(),
-                position.getQuantity(),
-                price,
-                position.getQuantity() * price, position.getOrderId());
-        enrichedPos.setTimestamp(System.currentTimeMillis());
-        return enrichedPos;
-        */
+
         position.setPrice(price);
         position.setMarketValue(position.getQuantity() * price);
         position.setTimestamp(System.currentTimeMillis());

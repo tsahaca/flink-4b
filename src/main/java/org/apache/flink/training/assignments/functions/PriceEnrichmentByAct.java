@@ -8,15 +8,21 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.co.RichCoFlatMapFunction;
 import org.apache.flink.training.assignments.domain.Position;
 import org.apache.flink.training.assignments.domain.Price;
+import org.apache.flink.training.assignments.orders.DataStreamTest;
 import org.apache.flink.util.Collector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
 
 public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price, Position> {
+    private static final Logger LOG = LoggerFactory.getLogger(PriceEnrichmentByAct.class);
+
     // keyed, managed state
     private ValueState<Position> positionState;
     private ValueState<Price> priceState;
+
 
     @Override
     public void open(Configuration config) {
@@ -26,6 +32,7 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
 
     @Override
     public void flatMap1(Position position, Collector<Position> out) throws Exception {
+        //LOG.info("****flatMap1 {}", ++flatMap1);
         Price price = priceState.value();
         if (price != null) {
             //priceState.clear();
@@ -37,26 +44,20 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
 
     @Override
     public void flatMap2(Price price, Collector<Position> out) throws Exception {
+        //LOG.info("****flatMap2 {}", ++flatMap2);
         Position position = positionState.value();
+        priceState.update(price);
         if (position != null) {
             positionState.clear();
             out.collect(enrichPositionByActWithPrice(position,price.getPrice().doubleValue()));
-        } else {
+        } /**
+        else {
             priceState.update(price);
-        }
+        }**/
     }
 
     private Position enrichPositionByActWithPrice(final Position position, final double price) {
-        /**
-        final Position enrichedPos = new Position(position.getAccount(),
-                position.getSubAccount(),
-                position.getCusip(),
-                position.getQuantity(),
-                price,
-                position.getQuantity() * price, position.getOrderId());
-        enrichedPos.setTimestamp(System.currentTimeMillis());
-        return enrichedPos;
-        */
+
         position.setPrice(price);
         position.setMarketValue(position.getQuantity() * price);
         position.setTimestamp(System.currentTimeMillis());

@@ -6,6 +6,9 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.training.assignments.domain.Position;
+import org.apache.flink.training.assignments.domain.Price;
+import org.apache.flink.training.assignments.functions.PriceEnrichmentByAct;
+import org.apache.flink.training.assignments.functions.PriceEnrichmentByActWithListState;
 import org.apache.flink.training.assignments.keys.AccountPositionKeySelector;
 import org.apache.flink.training.assignments.keys.PositionAggregationWindowFunction;
 import org.apache.flink.training.assignments.sinks.LogSink;
@@ -13,6 +16,7 @@ import org.apache.flink.training.assignments.utils.ExerciseBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class DataStreamTest extends ExerciseBase {
@@ -31,48 +35,55 @@ public class DataStreamTest extends ExerciseBase {
                                 100
                         ),
                         new Position(
-                                "AC1",
-                                "SB1",
-                                "CUSIP1",
-                                250
-                        ),
-                        new Position(
-                                "AC1",
-                                "SB1",
-                                "CUSIP1",
-                                -70
-                        ),
-                        new Position(
                                 "AC2",
                                 "SB2",
+                                "CUSIP1",
+                                200
+                        ),
+                        new Position(
+                                "AC3",
+                                "SB3",
                                 "CUSIP1",
                                 300
-                        ),
-                        new Position(
-                                "AC2",
-                                "SB2",
-                                "CUSIP1",
-                                -250
-                        ),
-                        new Position(
-                                "AC2",
-                                "SB2",
-                                "CUSIP1",
-                                35
                         )
-                ));
-        positionDataStream.addSink(new LogSink<>(LOG,
-                LogSink.LoggerEnum.INFO, "**** inputStream {}"));
+                )).keyBy(position -> position.getCusip());
 
-        var output = positionDataStream.keyBy(new AccountPositionKeySelector())
-                //.countWindow(3)
-                //.window(TumblingProcessingTimeWindows.of(Time.milliseconds(10)))
-                .timeWindow(Time.milliseconds(3))
+        DataStream<Price> priceDataStream=
+                env.fromCollection(Arrays.asList(
+                        new Price(
+                                "1",
+                                "CUSIP3",
+                                new BigDecimal(5.0),
+                                System.currentTimeMillis()
+                        )
+                        ,
 
-                .sum("quantity");
-                //.apply(new PositionAggregationWindowFunction());
-        output.addSink(new LogSink<>(LOG,
-                LogSink.LoggerEnum.INFO, "**** outputStream {}"));
+                        new Price(
+                                "2",
+                                "CUSIP2",
+                                new BigDecimal(15.0),
+                                System.currentTimeMillis()
+                        )
+                        ,
+                        new Price(
+                                "3",
+                                "CUSIP1",
+                                new BigDecimal(25.0),
+                                System.currentTimeMillis()
+                        )
+
+                )).keyBy(price -> price.getCusip());
+
+        var priceEnrichedPositions= positionDataStream
+                .connect(priceDataStream)
+                .flatMap(new PriceEnrichmentByActWithListState())
+                //.flatMap(new PriceEnrichmentByAct())
+                .name("AccountPositionEnrichment")
+                .uid("AccountPositionEnrichment");
+
+        priceEnrichedPositions.addSink(new LogSink<>(LOG,
+                LogSink.LoggerEnum.INFO, "**** outStream {}"));
+
         env.execute("DataStreamTest");
 
 
