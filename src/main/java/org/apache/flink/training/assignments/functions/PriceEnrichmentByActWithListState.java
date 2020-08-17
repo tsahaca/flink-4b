@@ -36,7 +36,7 @@ public class PriceEnrichmentByActWithListState extends RichCoFlatMapFunction<Pos
     @Override
     public void flatMap2(Price price, Collector<Position> out) throws Exception {
         Iterable<Position> positionList=positionListState.get();
-        priceState.update(price);
+        //priceState.update(price);
 
         if(positionList != null){
             positionListState.clear();
@@ -44,10 +44,9 @@ public class PriceEnrichmentByActWithListState extends RichCoFlatMapFunction<Pos
                 out.collect(enrichPositionByActWithPrice(pos,price.getPrice().doubleValue()));
             }
         }
-        /**
         else {
             priceState.update(price);
-        }**/
+        }
 
     }
 

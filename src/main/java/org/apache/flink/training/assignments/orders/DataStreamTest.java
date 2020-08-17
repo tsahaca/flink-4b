@@ -51,6 +51,12 @@ public class DataStreamTest extends ExerciseBase {
                                 "SB4",
                                 "CUSIP2",
                                 400
+                        ),
+                        new Position(
+                                "AC5",
+                                "SB5",
+                                "CUSIP3",
+                                500
                         )
                 )).keyBy(position -> position.getCusip());
 

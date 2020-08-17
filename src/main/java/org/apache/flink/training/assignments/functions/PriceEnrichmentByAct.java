@@ -34,7 +34,7 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
         //LOG.info("****flatMap1 {}", ++flatMap1);
         Price price = priceState.value();
         if (price != null) {
-            //priceState.clear();
+           // priceState.clear();
             out.collect(enrichPositionByActWithPrice(position,price.getPrice().doubleValue()));
         } else {
             positionState.update(position);
