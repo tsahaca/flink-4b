@@ -37,14 +37,20 @@ public class DataStreamTest extends ExerciseBase {
                         new Position(
                                 "AC2",
                                 "SB2",
-                                "CUSIP1",
+                                "CUSIP2",
                                 200
                         ),
                         new Position(
                                 "AC3",
                                 "SB3",
-                                "CUSIP1",
+                                "CUSIP3",
                                 300
+                        ),
+                        new Position(
+                                "AC4",
+                                "SB4",
+                                "CUSIP2",
+                                400
                         )
                 )).keyBy(position -> position.getCusip());
 
@@ -76,8 +82,8 @@ public class DataStreamTest extends ExerciseBase {
 
         var priceEnrichedPositions= positionDataStream
                 .connect(priceDataStream)
-                .flatMap(new PriceEnrichmentByActWithListState())
-                //.flatMap(new PriceEnrichmentByAct())
+               // .flatMap(new PriceEnrichmentByActWithListState())
+                .flatMap(new PriceEnrichmentByAct())
                 .name("AccountPositionEnrichment")
                 .uid("AccountPositionEnrichment");
 

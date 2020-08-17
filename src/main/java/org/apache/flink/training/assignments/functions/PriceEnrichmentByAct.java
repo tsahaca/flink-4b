@@ -23,7 +23,6 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
     private ValueState<Position> positionState;
     private ValueState<Price> priceState;
 
-
     @Override
     public void open(Configuration config) {
         positionState = getRuntimeContext().getState(new ValueStateDescriptor<>("saved Position", Position.class));
@@ -50,7 +49,7 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
         if (position != null) {
             positionState.clear();
             out.collect(enrichPositionByActWithPrice(position,price.getPrice().doubleValue()));
-        } /**
+        }/**
         else {
             priceState.update(price);
         }**/

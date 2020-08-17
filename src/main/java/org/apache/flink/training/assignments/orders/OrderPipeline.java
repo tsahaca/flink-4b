@@ -61,21 +61,21 @@ public class OrderPipeline {
          */
         DataStream<Price> priceStream = env.addSource(readPriceFromKafka(IN_PRICE,new PriceDeserializationSchema()))
                 .name("kfkaPriceReader").uid("kfkaPriceReader")
-                .rebalance()
+                //.rebalance()
                 .keyBy(price -> price.getCusip());
          //priceStream.addSink(new LogSink<>(LOG,
            //     LogSink.LoggerEnum.INFO, "**** priceStream {}"));
 
         DataStream<Position> positionsByAct = env.addSource(readPositionActFromKafka(IN_POSITION_ACT,new PositionDeserializationSchema()))
                 .name("kfkaPositionsByActReader").uid("kfkaPositionsByActReader")
-                .rebalance()
+               // .rebalance()
                 .keyBy(position -> position.getCusip());
         //positionsByAct.addSink(new LogSink<>(LOG,
          //       LogSink.LoggerEnum.INFO, "**** positionsByAct {}"));
 
         var positionBySymbol = env.addSource(readPositionSymbolFromKafka(IN_POSITION_SYMBOL,new PositionByCusipDeserializationSchema()))
                 .name("kfkaPositionsBySymbolReader").uid("kfkaPositionsBySymbolReader")
-                .rebalance()
+                //.rebalance()
                 .keyBy(positionSymbol -> positionSymbol.getCusip());
         //positionBySymbol.addSink(new LogSink<>(LOG,
                //LogSink.LoggerEnum.INFO, "**** positionsBySymbol {}"));
