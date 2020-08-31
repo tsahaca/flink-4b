@@ -1,6 +1,8 @@
 package org.apache.flink.training.assignments.orders;
 
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.contrib.streaming.state.RocksDBStateBackend;
+import org.apache.flink.runtime.state.memory.MemoryStateBackend;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -55,6 +57,9 @@ public class OrderPipeline {
         var env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
         env.disableOperatorChaining();
+        final RocksDBStateBackend stateBackend = new RocksDBStateBackend("file:///opt/flink/checkpoints", true);
+
+        env.setStateBackend(stateBackend);
 
         /**
          * Create the Price Stream from Kafka and keyBy cusip
@@ -105,7 +110,7 @@ public class OrderPipeline {
         priceEnrichedPositions.addSink(flinkKafkaProducer)
                 .name("PublishPositionMarketValueByActToKafka")
                 .uid("PublishPositionMarketValueByActToKafka");
-
+        /**
         var complianceResult = priceEnrichedPositions
                 .map(new MapFunction<Position, ComplianceResult>() {
                     @Override
@@ -122,6 +127,7 @@ public class OrderPipeline {
         complianceResult.addSink(flinkKafkaProducerCompResult)
                 .name("PublishComplianceResultToKafka")
                 .uid("PublishComplianceResultToKafka");
+        */
 
         var priceEnrichedPositionsBySymbol= positionBySymbol
                 .connect(priceStream)

@@ -36,15 +36,14 @@ public class PriceEnrichmentBySymbol extends RichCoFlatMapFunction<PositionByCus
     @Override
     public void flatMap2(Price price, Collector<PositionByCusip> out) throws Exception {
         PositionByCusip position = positionState.value();
-        priceState.update(price);
+        //priceState.update(price);
         if (position != null) {
             positionState.clear();
             out.collect(enrichPositionBySymbolWithPrice(position,price.getPrice().doubleValue()));
         }
-        /**
         else {
             priceState.update(price);
-        }**/
+        }
     }
 
     private PositionByCusip enrichPositionBySymbolWithPrice(final PositionByCusip position,
