@@ -58,7 +58,7 @@ public class PriceEnrichmentByAct extends RichCoFlatMapFunction<Position, Price,
     private Position enrichPositionByActWithPrice(final Position position, final double price) {
 
         position.setPrice(price);
-        position.setMarketValue(position.getQuantity() * price);
+        //position.setMarketValue(position.getQuantity() * price);
         position.setTimestamp(System.currentTimeMillis());
         return position;
     }

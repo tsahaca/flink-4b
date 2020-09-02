@@ -35,17 +35,18 @@ public class DataStreamTest extends ExerciseBase {
                                 100
                         ),
                         new Position(
-                                "AC2",
-                                "SB2",
-                                "CUSIP2",
+                                "AC1",
+                                "SB1",
+                                "CUSIP1",
                                 200
                         ),
                         new Position(
-                                "AC3",
-                                "SB3",
-                                "CUSIP3",
+                                "AC1",
+                                "SB1",
+                                "CUSIP1",
                                 300
-                        ),
+                        )
+                        /**,
                         new Position(
                                 "AC4",
                                 "SB4",
@@ -57,9 +58,11 @@ public class DataStreamTest extends ExerciseBase {
                                 "SB5",
                                 "CUSIP3",
                                 500
-                        )
-                )).keyBy(position -> position.getCusip());
-
+                        )*/
+                ))//.keyBy(position -> position.getCusip());
+                .keyBy(new AccountPositionKeySelector())
+                .sum("quantity");
+        /**
         DataStream<Price> priceDataStream=
                 env.fromCollection(Arrays.asList(
                         new Price(
@@ -95,6 +98,10 @@ public class DataStreamTest extends ExerciseBase {
 
         priceEnrichedPositions.addSink(new LogSink<>(LOG,
                 LogSink.LoggerEnum.INFO, "**** outStream {}"));
+         */
+        positionDataStream.addSink(new LogSink<>(LOG,
+                LogSink.LoggerEnum.INFO, "**** Rolling Aggregated Position: {}"));
+
 
         env.execute("DataStreamTest");
 

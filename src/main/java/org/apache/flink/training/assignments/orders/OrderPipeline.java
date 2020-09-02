@@ -12,6 +12,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer010;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.flink.training.assignments.domain.*;
 import org.apache.flink.training.assignments.functions.*;
+import org.apache.flink.training.assignments.keys.AccountPositionKeySelector;
 import org.apache.flink.training.assignments.serializers.*;
 import org.apache.flink.training.assignments.sinks.LogSink;
 import org.slf4j.Logger;
@@ -57,9 +58,14 @@ public class OrderPipeline {
         var env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setStreamTimeCharacteristic(TimeCharacteristic.ProcessingTime);
         env.disableOperatorChaining();
-        final RocksDBStateBackend stateBackend = new RocksDBStateBackend("file:///opt/flink/checkpoints", true);
+        //env.setParallelism(1);
 
+        final RocksDBStateBackend stateBackend = new RocksDBStateBackend("file:///opt/flink/price-checkpoints", true);
         env.setStateBackend(stateBackend);
+        // Enabling Checkpoint
+        long checkpointInterval = 5000;
+        env.enableCheckpointing(checkpointInterval);
+
 
         /**
          * Create the Price Stream from Kafka and keyBy cusip
@@ -89,13 +95,17 @@ public class OrderPipeline {
                 .connect(priceStream)
                 .flatMap(new PriceEnrichmentByAct())
                 //.flatMap(new PriceEnrichmentByActWithListState())
-                .name("AccountPositionEnrichment")
-                .uid("AccountPositionEnrichment")
-                .keyBy(position -> position.getCusip())
+                //.process(new PositionPriceCoProcess())
+                .name("AccountPositionPriceEnrichment")
+                .uid("AccountPositionPriceEnrichment")
+                .keyBy(new AccountPositionKeySelector())
                 .timeWindow(Time.minutes(1))
                 .apply(new PositionMarketValueWindowFunction())
                 .name("AccountPositionEnrichmentInOneMinWindow")
                 .uid("AccountPositionEnrichmentInOneMinWindow");
+
+
+
         /**
         priceEnrichedPositions.addSink(new LogSink<>(LOG,
                 LogSink.LoggerEnum.INFO, "**** priceEnrichedPositionsByAct {}"));
