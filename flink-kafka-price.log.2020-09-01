@@ -1,0 +1,872 @@
+[INFO] 2020-09-01 18:10:29,616 org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils setConfigOptionToDefaultIfNotSet - The configuration option Key: 'taskmanager.cpu.cores' , default: null (fallback keys: []) required for local execution is not set, setting it to its default value 1.7976931348623157E308
+[INFO] 2020-09-01 18:10:29,632 org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils setConfigOptionToDefaultIfNotSet - The configuration option Key: 'taskmanager.memory.task.heap.size' , default: null (fallback keys: []) required for local execution is not set, setting it to its default value 9223372036854775807 bytes
+[INFO] 2020-09-01 18:10:29,632 org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils setConfigOptionToDefaultIfNotSet - The configuration option Key: 'taskmanager.memory.task.off-heap.size' , default: 0 bytes (fallback keys: []) required for local execution is not set, setting it to its default value 9223372036854775807 bytes
+[INFO] 2020-09-01 18:10:29,632 org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils setConfigOptionToDefaultIfNotSet - The configuration option Key: 'taskmanager.memory.network.min' , default: 64 mb (fallback keys: [{key=taskmanager.network.memory.min, isDeprecated=true}]) required for local execution is not set, setting it to its default value 64 mb
+[INFO] 2020-09-01 18:10:29,632 org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils setConfigOptionToDefaultIfNotSet - The configuration option Key: 'taskmanager.memory.network.max' , default: 1 gb (fallback keys: [{key=taskmanager.network.memory.max, isDeprecated=true}]) required for local execution is not set, setting it to its default value 64 mb
+[INFO] 2020-09-01 18:10:29,632 org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils setConfigOptionToDefaultIfNotSet - The configuration option Key: 'taskmanager.memory.managed.size' , default: null (fallback keys: [{key=taskmanager.memory.size, isDeprecated=true}]) required for local execution is not set, setting it to its default value 128 mb
+[INFO] 2020-09-01 18:10:29,663 org.apache.flink.runtime.minicluster.MiniCluster start - Starting Flink Mini Cluster
+[INFO] 2020-09-01 18:10:29,663 org.apache.flink.runtime.minicluster.MiniCluster start - Starting Metrics Registry
+[INFO] 2020-09-01 18:10:29,741 org.apache.flink.runtime.metrics.MetricRegistryImpl <init> - No metrics reporter configured, no metrics will be exposed/reported.
+[INFO] 2020-09-01 18:10:29,741 org.apache.flink.runtime.minicluster.MiniCluster start - Starting RPC Service(s)
+[INFO] 2020-09-01 18:10:30,694 akka.event.slf4j.Slf4jLogger applyOrElse - Slf4jLogger started
+[INFO] 2020-09-01 18:10:30,851 org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils startActorSystem - Trying to start actor system at :0
+[INFO] 2020-09-01 18:10:30,916 akka.event.slf4j.Slf4jLogger applyOrElse - Slf4jLogger started
+[INFO] 2020-09-01 18:10:30,932 akka.remote.Remoting info - Starting remoting
+[INFO] 2020-09-01 18:10:31,198 akka.remote.Remoting info - Remoting started; listening on addresses :[akka.tcp://flink-metrics@10.38.130.110:53508]
+[INFO] 2020-09-01 18:10:31,229 org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils startActorSystem - Actor system started at akka.tcp://flink-metrics@10.38.130.110:53508
+[INFO] 2020-09-01 18:10:31,244 org.apache.flink.runtime.rpc.akka.AkkaRpcService startServer - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at akka://flink-metrics/user/MetricQueryService .
+[INFO] 2020-09-01 18:10:31,369 org.apache.flink.runtime.minicluster.MiniCluster createHighAvailabilityServices - Starting high-availability services
+[INFO] 2020-09-01 18:10:31,385 org.apache.flink.runtime.blob.BlobServer <init> - Created BLOB server storage directory C:\Users\ADMINI~1\AppData\Local\Temp\2\blobStore-85829cf2-ff8f-4448-94e7-6bf878889c3a
+[INFO] 2020-09-01 18:10:31,385 org.apache.flink.runtime.blob.BlobServer <init> - Started BLOB server at 0.0.0.0:53509 - max concurrent requests: 50 - max backlog: 1000
+[INFO] 2020-09-01 18:10:31,385 org.apache.flink.runtime.blob.PermanentBlobCache <init> - Created BLOB cache storage directory C:\Users\ADMINI~1\AppData\Local\Temp\2\blobStore-b2552d44-c4e3-4bbd-8792-ae0b2829ee1d
+[INFO] 2020-09-01 18:10:31,385 org.apache.flink.runtime.blob.TransientBlobCache <init> - Created BLOB cache storage directory C:\Users\ADMINI~1\AppData\Local\Temp\2\blobStore-a1ac4861-be85-4e46-9475-aa8359171f61
+[INFO] 2020-09-01 18:10:31,385 org.apache.flink.runtime.minicluster.MiniCluster startTaskManagers - Starting 1 TaskManger(s)
+[INFO] 2020-09-01 18:10:31,385 org.apache.flink.runtime.taskexecutor.TaskManagerRunner startTaskManager - Starting TaskManager with ResourceID: 8c32c3a8-62c9-4205-8b83-a9a194e6f229
+[WARN] 2020-09-01 18:10:31,401 org.apache.flink.runtime.taskmanager.TaskManagerLocation getHostName - No hostname could be resolved for the IP address 127.0.0.1, using IP address as host name. Local input split assignment (such as for HDFS files) may be impacted.
+[INFO] 2020-09-01 18:10:31,401 org.apache.flink.runtime.taskexecutor.TaskManagerServices checkTempDirs - Temporary file directory 'C:\Users\ADMINI~1\AppData\Local\Temp\2': total 29 GB, usable 3 GB (10.34% usable)
+[INFO] 2020-09-01 18:10:31,401 org.apache.flink.runtime.io.disk.FileChannelManagerImpl createFiles - FileChannelManager uses directory C:\Users\ADMINI~1\AppData\Local\Temp\2\flink-io-115621d5-d95d-4840-9a53-2f61730f36db for spill files.
+[INFO] 2020-09-01 18:10:31,416 org.apache.flink.runtime.io.disk.FileChannelManagerImpl createFiles - FileChannelManager uses directory C:\Users\ADMINI~1\AppData\Local\Temp\2\flink-netty-shuffle-a65c07c5-1eb3-46ab-82b1-da6c608da7eb for spill files.
+[INFO] 2020-09-01 18:10:31,463 org.apache.flink.runtime.io.network.buffer.NetworkBufferPool <init> - Allocated 64 MB for network buffer pool (number of memory segments: 2048, bytes per segment: 32768).
+[INFO] 2020-09-01 18:10:31,479 org.apache.flink.runtime.io.network.NettyShuffleEnvironment start - Starting the network environment and its components.
+[INFO] 2020-09-01 18:10:31,479 org.apache.flink.runtime.taskexecutor.KvStateService start - Starting the kvState service and its components.
+[WARN] 2020-09-01 18:10:31,479 org.apache.flink.runtime.taskmanager.TaskManagerLocation getHostName - No hostname could be resolved for the IP address 127.0.0.1, using IP address as host name. Local input split assignment (such as for HDFS files) may be impacted.
+[INFO] 2020-09-01 18:10:31,494 org.apache.flink.runtime.taskexecutor.TaskManagerConfiguration fromConfiguration - Messages have a max timeout of 10000 ms
+[INFO] 2020-09-01 18:10:31,526 org.apache.flink.runtime.rpc.akka.AkkaRpcService startServer - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at akka://flink/user/taskmanager_0 .
+[INFO] 2020-09-01 18:10:31,573 org.apache.flink.runtime.taskexecutor.JobLeaderService start - Start job leader service.
+[INFO] 2020-09-01 18:10:31,588 org.apache.flink.runtime.filecache.FileCache <init> - User file cache uses directory C:\Users\ADMINI~1\AppData\Local\Temp\2\flink-dist-cache-697a3eec-66fb-4821-9975-e8af7d0f9af5
+[INFO] 2020-09-01 18:10:31,619 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint start - Starting rest endpoint.
+[WARN] 2020-09-01 18:10:31,854 org.apache.flink.runtime.webmonitor.WebMonitorUtils find - Log file environment variable 'log.file' is not set.
+[WARN] 2020-09-01 18:10:31,854 org.apache.flink.runtime.webmonitor.WebMonitorUtils find - JobManager log files are unavailable in the web dashboard. Log file location not found in environment variable 'log.file' or configuration key 'Key: 'web.log.path' , default: null (fallback keys: [{key=jobmanager.web.log.path, isDeprecated=true}])'.
+[INFO] 2020-09-01 18:10:31,869 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint initializeHandlers - Failed to load web based job submission extension. Probable reason: flink-runtime-web is not in the classpath.
+[INFO] 2020-09-01 18:10:32,057 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint start - Rest endpoint listening at localhost:53528
+[INFO] 2020-09-01 18:10:32,057 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService updateLeader - Proposing leadership to contender http://localhost:53528
+[INFO] 2020-09-01 18:10:32,057 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint grantLeadership - http://localhost:53528 was granted leadership with leaderSessionID=f49f03ee-722d-4149-b19d-fc10e214c0b4
+[INFO] 2020-09-01 18:10:32,057 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService confirmLeader - Received confirmation of leadership for leader http://localhost:53528 , session=f49f03ee-722d-4149-b19d-fc10e214c0b4
+[INFO] 2020-09-01 18:10:32,073 org.apache.flink.runtime.rpc.akka.AkkaRpcService startServer - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.StandaloneResourceManager at akka://flink/user/resourcemanager .
+[INFO] 2020-09-01 18:10:32,088 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService updateLeader - Proposing leadership to contender LeaderContender: DefaultDispatcherRunner
+[INFO] 2020-09-01 18:10:32,088 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService updateLeader - Proposing leadership to contender LeaderContender: StandaloneResourceManager
+[INFO] 2020-09-01 18:10:32,104 org.apache.flink.runtime.minicluster.MiniCluster start - Flink Mini Cluster started successfully
+[INFO] 2020-09-01 18:10:32,104 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager tryAcceptLeadership - ResourceManager akka://flink/user/resourcemanager was granted leadership with fencing token b2571347b00d1d5fb108dc33866f47be
+[INFO] 2020-09-01 18:10:32,104 org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl start - Starting the SlotManager.
+[INFO] 2020-09-01 18:10:32,104 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess startInternal - Start SessionDispatcherLeaderProcess.
+[INFO] 2020-09-01 18:10:32,104 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService confirmLeader - Received confirmation of leadership for leader akka://flink/user/resourcemanager , session=b108dc33-866f-47be-b257-1347b00d1d5f
+[INFO] 2020-09-01 18:10:32,119 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess recoverJobs - Recover all persisted job graphs.
+[INFO] 2020-09-01 18:10:32,119 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess recoverJobs - Successfully recovered 0 persisted job graphs.
+[INFO] 2020-09-01 18:10:32,119 org.apache.flink.runtime.taskexecutor.TaskExecutor connectToResourceManager - Connecting to ResourceManager akka://flink/user/resourcemanager(b2571347b00d1d5fb108dc33866f47be).
+[INFO] 2020-09-01 18:10:32,135 org.apache.flink.runtime.taskexecutor.TaskExecutor lambda$startRegistration$0 - Resolved ResourceManager address, beginning registration
+[INFO] 2020-09-01 18:10:32,135 org.apache.flink.runtime.taskexecutor.TaskExecutor register - Registration at ResourceManager attempt 1 (timeout=100ms)
+[INFO] 2020-09-01 18:10:32,135 org.apache.flink.runtime.rpc.akka.AkkaRpcService startServer - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at akka://flink/user/dispatcher .
+[INFO] 2020-09-01 18:10:32,151 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager registerTaskExecutorInternal - Registering TaskManager with ResourceID 8c32c3a8-62c9-4205-8b83-a9a194e6f229 (akka://flink/user/taskmanager_0) at ResourceManager
+[INFO] 2020-09-01 18:10:32,166 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService confirmLeader - Received confirmation of leadership for leader akka://flink/user/dispatcher , session=84450235-af19-42d9-bdb2-bda99fed9ccf
+[INFO] 2020-09-01 18:10:32,166 org.apache.flink.runtime.taskexecutor.TaskExecutor onRegistrationSuccess - Successful registration at resource manager akka://flink/user/resourcemanager under registration id a68ce1fbccee2be485dbab33bdebe353.
+[INFO] 2020-09-01 18:10:32,166 org.apache.flink.runtime.dispatcher.StandaloneDispatcher submitJob - Received JobGraph submission 000853bb4deed9457bf95fc6f3f1eff3 (kafkaPrice).
+[INFO] 2020-09-01 18:10:32,166 org.apache.flink.runtime.dispatcher.StandaloneDispatcher internalSubmitJob - Submitting job 000853bb4deed9457bf95fc6f3f1eff3 (kafkaPrice).
+[INFO] 2020-09-01 18:10:32,198 org.apache.flink.runtime.rpc.akka.AkkaRpcService startServer - Starting RPC endpoint for org.apache.flink.runtime.jobmaster.JobMaster at akka://flink/user/jobmanager_1 .
+[INFO] 2020-09-01 18:10:32,198 org.apache.flink.runtime.jobmaster.JobMaster <init> - Initializing job kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3).
+[INFO] 2020-09-01 18:10:32,213 org.apache.flink.runtime.jobmaster.JobMaster createInstance - Using restart back off time strategy NoRestartBackoffTimeStrategy for kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3).
+[INFO] 2020-09-01 18:10:32,276 org.apache.flink.runtime.jobmaster.JobMaster buildGraph - Running initialization on master for job kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3).
+[INFO] 2020-09-01 18:10:32,276 org.apache.flink.runtime.jobmaster.JobMaster buildGraph - Successfully ran initialization on master in 0 ms.
+[INFO] 2020-09-01 18:10:32,307 org.apache.flink.runtime.jobmaster.JobMaster fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,323 org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionStrategy <init> - Start building failover regions.
+[INFO] 2020-09-01 18:10:32,323 org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionStrategy buildFailoverRegions - Created 1 failover regions.
+[INFO] 2020-09-01 18:10:32,323 org.apache.flink.runtime.jobmaster.JobMaster <init> - Using failover strategy org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionStrategy@31419eb6 for kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3).
+[INFO] 2020-09-01 18:10:32,323 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService updateLeader - Proposing leadership to contender akka://flink/user/jobmanager_1
+[INFO] 2020-09-01 18:10:32,323 org.apache.flink.runtime.jobmaster.JobManagerRunnerImpl startJobMaster - JobManager runner for job kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3) was granted leadership with session id ff6a5c4b-fb46-4cc4-84a8-636f7b1127ec at akka://flink/user/jobmanager_1.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.jobmaster.JobMaster startJobExecution - Starting execution of job kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3) under job master id 84a8636f7b1127ecff6a5c4bfb464cc4.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.jobmaster.JobMaster startSchedulingInternal - Starting scheduling with scheduling strategy [org.apache.flink.runtime.scheduler.strategy.EagerSchedulingStrategy]
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Job kafkaPrice (000853bb4deed9457bf95fc6f3f1eff3) switched from state CREATED to RUNNING.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,338 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,354 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,354 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) switched from CREATED to SCHEDULED.
+[INFO] 2020-09-01 18:10:32,354 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl stashRequestWaitingForResourceManager - Cannot serve slot request, no ResourceManager connected. Adding as pending request [SlotRequestId{9e4eabfdab61b41317ea84b648700cf0}]
+[INFO] 2020-09-01 18:10:32,369 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService confirmLeader - Received confirmation of leadership for leader akka://flink/user/jobmanager_1 , session=ff6a5c4b-fb46-4cc4-84a8-636f7b1127ec
+[INFO] 2020-09-01 18:10:32,369 org.apache.flink.runtime.jobmaster.JobMaster connectToResourceManager - Connecting to ResourceManager akka://flink/user/resourcemanager(b2571347b00d1d5fb108dc33866f47be)
+[INFO] 2020-09-01 18:10:32,369 org.apache.flink.runtime.jobmaster.JobMaster lambda$startRegistration$0 - Resolved ResourceManager address, beginning registration
+[INFO] 2020-09-01 18:10:32,369 org.apache.flink.runtime.jobmaster.JobMaster register - Registration at ResourceManager attempt 1 (timeout=100ms)
+[INFO] 2020-09-01 18:10:32,369 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager registerJobManager - Registering job manager 84a8636f7b1127ecff6a5c4bfb464cc4@akka://flink/user/jobmanager_1 for job 000853bb4deed9457bf95fc6f3f1eff3.
+[INFO] 2020-09-01 18:10:32,385 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager registerJobMasterInternal - Registered job manager 84a8636f7b1127ecff6a5c4bfb464cc4@akka://flink/user/jobmanager_1 for job 000853bb4deed9457bf95fc6f3f1eff3.
+[INFO] 2020-09-01 18:10:32,385 org.apache.flink.runtime.jobmaster.JobMaster establishResourceManagerConnection - JobManager successfully registered at ResourceManager, leader id: b2571347b00d1d5fb108dc33866f47be.
+[INFO] 2020-09-01 18:10:32,385 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl requestSlotFromResourceManager - Requesting new slot [SlotRequestId{9e4eabfdab61b41317ea84b648700cf0}] and profile ResourceProfile{UNKNOWN} from resource manager.
+[INFO] 2020-09-01 18:10:32,385 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager requestSlot - Request slot with profile ResourceProfile{UNKNOWN} for job 000853bb4deed9457bf95fc6f3f1eff3 with allocation id d97e60fb997453995c5881b7d2afc0af.
+[INFO] 2020-09-01 18:10:32,385 org.apache.flink.runtime.taskexecutor.TaskExecutor requestSlot - Receive slot request d97e60fb997453995c5881b7d2afc0af for job 000853bb4deed9457bf95fc6f3f1eff3 from resource manager with leader id b2571347b00d1d5fb108dc33866f47be.
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.TaskExecutor requestSlot - Allocated slot for d97e60fb997453995c5881b7d2afc0af.
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.JobLeaderService addJob - Add job 000853bb4deed9457bf95fc6f3f1eff3 for job leader monitoring.
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.JobLeaderService openRpcConnectionTo - Try to register at job manager akka://flink/user/jobmanager_1 with leader id ff6a5c4b-fb46-4cc4-84a8-636f7b1127ec.
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.JobLeaderService lambda$startRegistration$0 - Resolved JobManager address, beginning registration
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.JobLeaderService register - Registration at JobManager attempt 1 (timeout=100ms)
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.JobLeaderService onRegistrationSuccess - Successful registration at job manager akka://flink/user/jobmanager_1 for job 000853bb4deed9457bf95fc6f3f1eff3.
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.TaskExecutor establishJobManagerConnection - Establish JobManager connection for job 000853bb4deed9457bf95fc6f3f1eff3.
+[INFO] 2020-09-01 18:10:32,401 org.apache.flink.runtime.taskexecutor.TaskExecutor offerSlotsToJobManager - Offer reserved slots to the leader of job 000853bb4deed9457bf95fc6f3f1eff3.
+[INFO] 2020-09-01 18:10:32,416 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,416 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying Source: kfkaPriceReader (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying Source: kfkaPositionsByActReader (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying Source: kfkaPositionsBySymbolReader (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying AccountPositionEnrichment (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying Sink: PublishPositionMarketValueByActToKafka (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying SymbolPositionPriceEnrichment (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,432 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) switched from SCHEDULED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.executiongraph.ExecutionGraph deploy - Deploying Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (attempt #0) to 8c32c3a8-62c9-4205-8b83-a9a194e6f229 @ 127.0.0.1 (dataPort=-1)
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task Source: kfkaPriceReader (1/1).
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.taskmanager.Task transitionState - Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,448 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task Source: kfkaPositionsByActReader (1/1).
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task transitionState - Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task Source: kfkaPositionsBySymbolReader (1/1).
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task transitionState - Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,463 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task AccountPositionEnrichment (1/1).
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskmanager.Task transitionState - AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task Sink: PublishPositionMarketValueByActToKafka (1/1).
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task SymbolPositionPriceEnrichment (1/1).
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task SymbolPositionPriceEnrichmentInOneMinWindow (1/1).
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskexecutor.TaskExecutor submitTask - Received task Sink: PublishPositionMarketValueBySymbolToKafka (1/1).
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl markSlotActive - Activate slot d97e60fb997453995c5881b7d2afc0af.
+[INFO] 2020-09-01 18:10:32,479 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) switched from CREATED to DEPLOYING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Creating FileSystem stream leak safety net for task SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) [DEPLOYING]
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Loading JAR files for task SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,510 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - AccountPositionEnrichment (1/1) (247876897416ea8e6613dd026c35741c) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,510 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPriceReader (1/1) (2dbd6475482cb8f2eb8b763265772744) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,510 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,510 org.apache.flink.runtime.taskmanager.Task transitionState - Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Sink: PublishPositionMarketValueBySymbolToKafka (1/1) (6e06d80c91914626b42d97d3dc90b378) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPositionsBySymbolReader (1/1) (63fd328f57b5b9947f071acb7a0317d2) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Source: kfkaPositionsByActReader (1/1) (476951ce3b9b9796cd1eacccae20a521) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,526 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - Sink: PublishPositionMarketValueByActToKafka (1/1) (9441d1bebef96825f376d1ab23b82dce) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task doRun - Registering task at network: SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) [DEPLOYING].
+[INFO] 2020-09-01 18:10:32,494 org.apache.flink.runtime.taskmanager.Task transitionState - SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,541 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,541 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - SymbolPositionPriceEnrichment (1/1) (5ab5ddeb3d4aabc49b74b6e4357473b4) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,557 org.apache.flink.runtime.taskmanager.Task transitionState - SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,573 org.apache.flink.streaming.runtime.tasks.StreamTask fromApplicationOrConfigOrDefault - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+[INFO] 2020-09-01 18:10:32,588 org.apache.flink.runtime.executiongraph.ExecutionGraph transitionState - SymbolPositionPriceEnrichmentInOneMinWindow (1/1) (a9bc16637895e8a0813c1591feef2db1) switched from DEPLOYING to RUNNING.
+[INFO] 2020-09-01 18:10:32,619 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase initializeState - Consumer subtask 0 has no restore state.
+[INFO] 2020-09-01 18:10:32,619 org.apache.flink.runtime.state.heap.HeapKeyedStateBackend <init> - Initializing heap keyed state backend with stream factory.
+[INFO] 2020-09-01 18:10:32,635 org.apache.flink.runtime.state.heap.HeapKeyedStateBackend <init> - Initializing heap keyed state backend with stream factory.
+[INFO] 2020-09-01 18:10:32,619 org.apache.flink.runtime.state.heap.HeapKeyedStateBackend <init> - Initializing heap keyed state backend with stream factory.
+[INFO] 2020-09-01 18:10:32,619 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase initializeState - Consumer subtask 0 has no restore state.
+[INFO] 2020-09-01 18:10:32,619 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase initializeState - Consumer subtask 0 has no restore state.
+[INFO] 2020-09-01 18:10:32,635 org.apache.kafka.clients.producer.ProducerConfig logAll - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+[INFO] 2020-09-01 18:10:32,651 org.apache.kafka.clients.producer.ProducerConfig logAll - ProducerConfig values: 
+	acks = 1
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.ByteArraySerializer
+
+[INFO] 2020-09-01 18:10:32,651 org.apache.kafka.clients.consumer.ConsumerConfig logAll - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+[INFO] 2020-09-01 18:10:32,651 org.apache.kafka.clients.consumer.ConsumerConfig logAll - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+[INFO] 2020-09-01 18:10:32,651 org.apache.kafka.clients.consumer.ConsumerConfig logAll - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+[INFO] 2020-09-01 18:10:32,713 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,713 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,713 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,729 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,713 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,729 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,729 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,729 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,713 org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducerBase open - Starting FlinkKafkaProducer (1/1) to produce into default topic mvBySymbol
+[WARN] 2020-09-01 18:10:32,744 org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducerBase open - Flushing on checkpoint is enabled, but checkpointing is not enabled. Disabling flushing.
+[INFO] 2020-09-01 18:10:32,729 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,744 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,729 org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducerBase open - Starting FlinkKafkaProducer (1/1) to produce into default topic mvByAct
+[WARN] 2020-09-01 18:10:32,744 org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducerBase open - Flushing on checkpoint is enabled, but checkpointing is not enabled. Disabling flushing.
+[INFO] 2020-09-01 18:10:32,807 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase open - Consumer subtask 0 will start reading the following 4 partitions from the committed group offsets in Kafka: [KafkaTopicPartition{topic='positionsByAct', partition=1}, KafkaTopicPartition{topic='positionsByAct', partition=2}, KafkaTopicPartition{topic='positionsByAct', partition=3}, KafkaTopicPartition{topic='positionsByAct', partition=0}]
+[INFO] 2020-09-01 18:10:32,807 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase open - Consumer subtask 0 will start reading the following 4 partitions from the committed group offsets in Kafka: [KafkaTopicPartition{topic='price', partition=0}, KafkaTopicPartition{topic='price', partition=3}, KafkaTopicPartition{topic='price', partition=1}, KafkaTopicPartition{topic='price', partition=2}]
+[INFO] 2020-09-01 18:10:32,807 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase open - Consumer subtask 0 will start reading the following 4 partitions from the committed group offsets in Kafka: [KafkaTopicPartition{topic='positionsBySymbol', partition=0}, KafkaTopicPartition{topic='positionsBySymbol', partition=3}, KafkaTopicPartition{topic='positionsBySymbol', partition=1}, KafkaTopicPartition{topic='positionsBySymbol', partition=2}]
+[INFO] 2020-09-01 18:10:32,807 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase run - Consumer subtask 0 creating fetcher with offsets {KafkaTopicPartition{topic='positionsByAct', partition=1}=-915623761773, KafkaTopicPartition{topic='positionsByAct', partition=2}=-915623761773, KafkaTopicPartition{topic='positionsByAct', partition=3}=-915623761773, KafkaTopicPartition{topic='positionsByAct', partition=0}=-915623761773}.
+[INFO] 2020-09-01 18:10:32,807 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase run - Consumer subtask 0 creating fetcher with offsets {KafkaTopicPartition{topic='price', partition=0}=-915623761773, KafkaTopicPartition{topic='price', partition=3}=-915623761773, KafkaTopicPartition{topic='price', partition=1}=-915623761773, KafkaTopicPartition{topic='price', partition=2}=-915623761773}.
+[INFO] 2020-09-01 18:10:32,807 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase run - Consumer subtask 0 creating fetcher with offsets {KafkaTopicPartition{topic='positionsBySymbol', partition=0}=-915623761773, KafkaTopicPartition{topic='positionsBySymbol', partition=3}=-915623761773, KafkaTopicPartition{topic='positionsBySymbol', partition=1}=-915623761773, KafkaTopicPartition{topic='positionsBySymbol', partition=2}=-915623761773}.
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.clients.consumer.ConsumerConfig logAll - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.clients.consumer.ConsumerConfig logAll - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.clients.consumer.ConsumerConfig logAll - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [--KAFKA_ADDRESS kafka.dest.tanmay.wsn.riskfocus.com:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = 
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	internal.leave.group.on.close = true
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,823 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,838 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka version : 0.10.2.2
+[INFO] 2020-09-01 18:10:32,838 org.apache.kafka.common.utils.AppInfoParser <init> - Kafka commitId : cd80bc412b9b9701
+[INFO] 2020-09-01 18:10:32,838 org.apache.kafka.clients.consumer.internals.AbstractCoordinator onSuccess - Discovered coordinator 10.38.93.7:9092 (id: 2147473646 rack: null) for group .
+[INFO] 2020-09-01 18:10:32,838 org.apache.kafka.clients.consumer.internals.AbstractCoordinator onSuccess - Discovered coordinator 10.38.93.7:9092 (id: 2147473646 rack: null) for group .
+[INFO] 2020-09-01 18:10:32,869 org.apache.kafka.clients.consumer.internals.AbstractCoordinator onSuccess - Discovered coordinator 10.38.93.7:9092 (id: 2147473646 rack: null) for group .
+[INFO] 2020-09-01 18:13:05,078 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:13:05
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip3, quantity=105385719, price=6.918014557180783, marketValue=7.290599381609634E8, orderId=1598999449201-44)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip3, quantity=100368204, price=6.918014557180783, marketValue=6.943486963500905E8, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip3, quantity=106188665, price=6.918014557180783, marketValue=7.346147302775935E8, orderId=1598999448826-4)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip3, quantity=108722480, price=6.918014557180783, marketValue=7.521436993327965E8, orderId=1598999449000-25)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip3, quantity=108573958, price=6.918014557180783, marketValue=7.511162219747349E8, orderId=1598999449001-27)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip3, quantity=108127344, price=6.918014557180783, marketValue=7.480265398212942E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip3, quantity=94459255, price=6.918014557180783, marketValue=6.534705011504517E8, orderId=1598999448903-20)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip3, quantity=115940591, price=6.918014557180783, marketValue=8.020786963061433E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip3, quantity=105913884, price=6.918014557180783, marketValue=7.327137913195568E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip3, quantity=94371163, price=6.918014557180783, marketValue=6.528610794120805E8, orderId=1598999449101-39)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip3, quantity=94218434, price=6.918014557180783, marketValue=6.518044979667768E8, orderId=1598999448827-9)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip3, quantity=100014426, price=6.918014557180783, marketValue=6.919012549960802E8, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip3, quantity=102229335, price=6.918014557180783, marketValue=7.072240277009109E8, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip3, quantity=99969502, price=6.918014557180783, marketValue=6.915904701101134E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip3, quantity=100346208, price=6.918014557180783, marketValue=6.941965277018907E8, orderId=1598999449202-51)
+[INFO] 2020-09-01 18:13:05,094 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip3, quantity=108343095, price=6.918014557180783, marketValue=7.495191083800205E8, orderId=1598999448826-4)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:13:05
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip2, quantity=98133730, price=22.465650314148863, marketValue=2.2046380622030997E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip2, quantity=110434390, price=22.465650314148863, marketValue=2.480980388396338E9, orderId=1598999449001-30)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip2, quantity=105898138, price=22.465650314148863, marketValue=2.37907053722748E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip2, quantity=114974334, price=22.465650314148863, marketValue=2.582973182746156E9, orderId=1598999448825-2)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip2, quantity=96908097, price=22.465650314148863, marketValue=2.1771034198116183E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip2, quantity=100993978, price=22.465650314148863, marketValue=2.2688953935828433E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip2, quantity=106509944, price=22.465650314148863, marketValue=2.392815156883578E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip2, quantity=107941502, price=22.465650314148863, marketValue=2.424976038316E9, orderId=1598999448903-18)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip2, quantity=114258519, price=22.465650314148863, marketValue=2.566891933266534E9, orderId=1598999448901-14)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip2, quantity=103994087, price=22.465650314148863, marketValue=2.336294793281174E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip2, quantity=104876340, price=22.465650314148863, marketValue=2.356115180667783E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip2, quantity=103421669, price=22.465650314148863, marketValue=2.32343505065965E9, orderId=1598999449101-36)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip2, quantity=99081754, price=22.465650314148863, marketValue=2.2259360378765206E9, orderId=1598999449001-31)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip2, quantity=110935547, price=22.465650314148863, marketValue=2.492239206310826E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip2, quantity=103753154, price=22.465650314148863, marketValue=2.3308820767540355E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip2, quantity=105011123, price=22.465650314148863, marketValue=2.359143168414075E9, orderId=1598999448825-2)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:13:05
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip4, quantity=118901910, price=35.959495014902636, marketValue=4.275652639907402E9, orderId=1598999448900-12)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip4, quantity=107163907, price=35.959495014902636, marketValue=3.8535599795439897E9, orderId=1598999448901-15)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip4, quantity=107616478, price=35.959495014902636, marketValue=3.8698342041623793E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip4, quantity=109383879, price=35.959495014902636, marketValue=3.933389051611213E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip4, quantity=116960829, price=35.959495014902636, marketValue=4.20585234736438E9, orderId=1598999448827-7)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip4, quantity=111685533, price=35.959495014902636, marketValue=4.0161553671502438E9, orderId=1598999448901-15)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip4, quantity=101390330, price=35.959495014902636, marketValue=3.645945066194333E9, orderId=1598999448827-7)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip4, quantity=108801294, price=35.959495014902636, marketValue=3.9124395892079563E9, orderId=1598999448789-1)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip4, quantity=108097471, price=35.959495014902636, marketValue=3.8871304695480824E9, orderId=1598999448827-8)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip4, quantity=116650366, price=35.959495014902636, marketValue=4.194688254663568E9, orderId=1598999449201-48)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip4, quantity=111032262, price=35.959495014902636, marketValue=3.9926640718823633E9, orderId=1598999448828-11)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip4, quantity=106264268, price=35.959495014902636, marketValue=3.8212094154082775E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip4, quantity=115918074, price=35.959495014902636, marketValue=4.168355404140115E9, orderId=1598999449301-53)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip4, quantity=102415566, price=35.959495014902636, marketValue=3.682812035025432E9, orderId=1598999448827-8)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip4, quantity=105439481, price=35.959495014902636, marketValue=3.791550491393421E9, orderId=1598999448789-1)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip4, quantity=109468245, price=35.959495014902636, marketValue=3.9364228103676405E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:13:05
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip1, quantity=112792064, price=33.42112810959785, marketValue=3.76963802068996E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip1, quantity=103384724, price=33.42112810959785, marketValue=3.4552341053794155E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip1, quantity=109037627, price=33.42112810959785, marketValue=3.644160500733546E9, orderId=1598999449201-45)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip1, quantity=98024162, price=33.42112810959785, marketValue=3.2760780760379734E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip1, quantity=106125751, price=33.42112810959785, marketValue=3.5468423198982825E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip1, quantity=97738318, price=33.42112810959785, marketValue=3.2665248470946136E9, orderId=1598999448826-6)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip1, quantity=110743701, price=33.42112810959785, marketValue=3.7011794184519997E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip1, quantity=106766491, price=33.42112810959785, marketValue=3.5682565735232263E9, orderId=1598999449001-28)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip1, quantity=113427814, price=33.42112810959785, marketValue=3.790885502885637E9, orderId=1598999449202-49)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip1, quantity=112979502, price=33.42112810959785, marketValue=3.775902410100567E9, orderId=1598999448826-6)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip1, quantity=107016227, price=33.42112810959785, marketValue=3.5766030323728046E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip1, quantity=116482130, price=33.42112810959785, marketValue=3.8929641892088313E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip1, quantity=106837189, price=33.42112810959785, marketValue=3.5706193804383183E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip1, quantity=119873326, price=33.42112810959785, marketValue=4.006301785169587E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip1, quantity=105302090, price=33.42112810959785, marketValue=3.519314640098403E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:13:05,110 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip1, quantity=106898840, price=33.42112810959785, marketValue=3.5726798264074035E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:14:05
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip4, quantity=113429114, price=21.94205908262258, marketValue=2.4888683210775323E9, orderId=1598999448900-12)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip4, quantity=111033498, price=21.94205908262258, marketValue=2.4363035732662563E9, orderId=1598999448901-15)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip4, quantity=102418981, price=21.94205908262258, marketValue=2.2472833322839994E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip4, quantity=108356752, price=21.94205908262258, marketValue=2.3775702543850827E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip4, quantity=107419137, price=21.94205908262258, marketValue=2.3569970506583295E9, orderId=1598999448827-7)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip4, quantity=114969980, price=21.94205908262258, marketValue=2.5226780938879366E9, orderId=1598999448901-15)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip4, quantity=108412716, price=21.94205908262258, marketValue=2.3787982197795825E9, orderId=1598999448827-7)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip4, quantity=97235715, price=21.94205908262258, marketValue=2.1335518034710507E9, orderId=1598999448789-1)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip4, quantity=122647774, price=21.94205908262258, marketValue=2.6911447034601417E9, orderId=1598999449201-48)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip4, quantity=109497425, price=21.94205908262258, marketValue=2.4025989687450347E9, orderId=1598999448827-8)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip4, quantity=113944372, price=21.94205908262258, marketValue=2.500174142556326E9, orderId=1598999448828-11)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip4, quantity=111462383, price=21.94205908262258, marketValue=2.4457141932759066E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip4, quantity=108328371, price=21.94205908262258, marketValue=2.3769475168062587E9, orderId=1598999449301-53)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip4, quantity=111751956, price=21.94205908262258, marketValue=2.452068021150639E9, orderId=1598999448827-8)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip4, quantity=111269445, price=21.94205908262258, marketValue=2.441480736280624E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip4, quantity=110139011, price=21.94205908262258, marketValue=2.4166766866636186E9, orderId=1598999448789-1)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:14:05
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip1, quantity=111319966, price=42.85872295657845, marketValue=4.771031582329732E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip1, quantity=111862466, price=42.85872295657845, marketValue=4.794282439533676E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip1, quantity=119278627, price=42.85872295657845, marketValue=5.112129629234057E9, orderId=1598999449201-45)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip1, quantity=123066592, price=42.85872295657845, marketValue=5.274476971738274E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip1, quantity=114581131, price=42.85872295657845, marketValue=4.910800949580422E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip1, quantity=110189071, price=42.85872295657845, marketValue=4.722562866831753E9, orderId=1598999448826-6)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip1, quantity=110264272, price=42.85872295657845, marketValue=4.72578588565681E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip1, quantity=112032370, price=42.85872295657845, marketValue=4.801564307998891E9, orderId=1598999449202-49)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip1, quantity=120529695, price=42.85872295657845, marketValue=5.165748806045898E9, orderId=1598999449001-28)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip1, quantity=99981483, price=42.85872295657845, marketValue=4.285078680684858E9, orderId=1598999448826-6)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip1, quantity=104874609, price=42.85872295657845, marketValue=4.494791812310489E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip1, quantity=111467701, price=42.85872295657845, marketValue=4.777363315765722E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip1, quantity=123159064, price=42.85872295657845, marketValue=5.278440203567514E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip1, quantity=123978437, price=42.85872295657845, marketValue=5.313557483972614E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip1, quantity=121976599, price=42.85872295657845, marketValue=5.227761263726664E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip1, quantity=114794133, price=42.85872295657845, marketValue=4.91992994328762E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:14:05
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip2, quantity=105583993, price=9.179563026013248, marketValue=9.692149182816416E8, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip2, quantity=109128367, price=9.179563026013248, marketValue=1.0017507228024043E9, orderId=1598999449001-30)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip2, quantity=112768465, price=9.179563026013248, marketValue=1.0351652318142691E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip2, quantity=114672536, price=9.179563026013248, marketValue=1.0526437715647732E9, orderId=1598999448825-2)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip2, quantity=112806810, price=9.179563026013248, marketValue=1.0355172221585015E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip2, quantity=117069250, price=9.179563026013248, marketValue=1.0746445587831016E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip2, quantity=112843338, price=9.179563026013248, marketValue=1.0358525332367158E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip2, quantity=120506349, price=9.179563026013248, marketValue=1.1061956256802485E9, orderId=1598999448903-18)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip2, quantity=121512626, price=9.179563026013248, marketValue=1.1154328088233762E9, orderId=1598999448901-14)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip2, quantity=119288126, price=9.179563026013248, marketValue=1.0950128708720098E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip2, quantity=107271124, price=9.179563026013248, marketValue=9.847020436292824E8, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip2, quantity=106698924, price=9.179563026013248, marketValue=9.794494976657976E8, orderId=1598999449101-36)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip2, quantity=106092652, price=9.179563026013248, marketValue=9.738841856308905E8, orderId=1598999449001-31)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip2, quantity=119061043, price=9.179563026013248, marketValue=1.0929283481613734E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip2, quantity=125465319, price=9.179563026013248, marketValue=1.1517168033393576E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:14:05,157 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip2, quantity=115530220, price=9.179563026013248, marketValue=1.0605169358991764E9, orderId=1598999448825-2)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:14:05
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip3, quantity=114792241, price=36.41721629617064, marketValue=4.180413869619148E9, orderId=1598999449201-44)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip3, quantity=112517107, price=36.41721629617064, marketValue=4.0975598226383758E9, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip3, quantity=118171156, price=36.41721629617064, marketValue=4.303464548020523E9, orderId=1598999448826-4)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip3, quantity=112267195, price=36.41721629617064, marketValue=4.0884587232793674E9, orderId=1598999449000-25)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip3, quantity=114067684, price=36.41721629617064, marketValue=4.154027520631243E9, orderId=1598999449001-27)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip3, quantity=106859476, price=36.41721629617064, marketValue=3.8915246507874556E9, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip3, quantity=112999448, price=36.41721629617064, marketValue=4.115125339163887E9, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip3, quantity=116150139, price=36.41721629617064, marketValue=4.2298647347932854E9, orderId=1598999448903-20)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip3, quantity=109570800, price=36.41721629617064, marketValue=3.9902635233444543E9, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip3, quantity=100435721, price=36.41721629617064, marketValue=3.657589375518848E9, orderId=1598999449101-39)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip3, quantity=112917673, price=36.41721629617064, marketValue=4.1121473213012676E9, orderId=1598999448827-9)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip3, quantity=117714237, price=36.41721629617064, marketValue=4.2868248299676933E9, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip3, quantity=111382008, price=36.41721629617064, marketValue=4.056222676837809E9, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip3, quantity=116869362, price=36.41721629617064, marketValue=4.2560568343494663E9, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip3, quantity=120413206, price=36.41721629617064, marketValue=4.385113767817352E9, orderId=1598999449202-51)
+[INFO] 2020-09-01 18:14:05,376 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip3, quantity=115719804, price=36.41721629617064, marketValue=4.2141931320184727E9, orderId=1598999448826-4)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:15:05
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip1, quantity=118614040, price=37.102941836809286, marketValue=4.400929827148971E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip1, quantity=113371278, price=37.102941836809286, marketValue=4.2064079335987363E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip1, quantity=122441676, price=37.102941836809286, marketValue=4.542946383029448E9, orderId=1598999449201-45)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip1, quantity=119159911, price=37.102941836809286, marketValue=4.421183247112371E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip1, quantity=115615657, price=37.102941836809286, marketValue=4.2896809970954924E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip1, quantity=118440561, price=37.102941836809286, marketValue=4.394493245902062E9, orderId=1598999448826-6)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip1, quantity=120267672, price=37.102941836809286, marketValue=4.462284439064457E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip1, quantity=122018688, price=37.102941836809286, marketValue=4.527252283867779E9, orderId=1598999449202-49)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip1, quantity=122841944, price=37.102941836809286, marketValue=4.557797503352584E9, orderId=1598999449001-28)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip1, quantity=118578250, price=37.102941836809286, marketValue=4.399601912860631E9, orderId=1598999448826-6)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip1, quantity=112656450, price=37.102941836809286, marketValue=4.1798857118914137E9, orderId=1598999449101-37)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip1, quantity=117746264, price=37.102941836809286, marketValue=4.368732784693591E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip1, quantity=107982382, price=37.102941836809286, marketValue=4.006464038746122E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip1, quantity=120471403, price=37.102941836809286, marketValue=4.469843458507812E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip1, quantity=127406469, price=37.102941836809286, marketValue=4.727154808940246E9, orderId=1598999448901-16)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip1, quantity=116518259, price=37.102941836809286, marketValue=4.32317018660328E9, orderId=1598999448827-10)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:15:05
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip4, quantity=113279055, price=20.737410645708614, marketValue=2.3491142810928116E9, orderId=1598999448900-12)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip4, quantity=108270513, price=20.737410645708614, marketValue=2.245250088902533E9, orderId=1598999448901-15)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip4, quantity=114816919, price=20.737410645708614, marketValue=2.3810055983780637E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip4, quantity=120320717, price=20.737410645708614, marketValue=2.495140117615093E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip4, quantity=113097445, price=20.737410645708614, marketValue=2.3453481599454446E9, orderId=1598999448827-7)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip4, quantity=116656154, price=20.737410645708614, marketValue=2.4191465698470235E9, orderId=1598999448901-15)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip4, quantity=114465298, price=20.737410645708614, marketValue=2.373713889309409E9, orderId=1598999448827-7)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip4, quantity=125214119, price=20.737410645708614, marketValue=2.596616604343625E9, orderId=1598999448789-1)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip4, quantity=112156999, price=20.737410645708614, marketValue=2.3258457450533304E9, orderId=1598999448827-8)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip4, quantity=127735138, price=20.737410645708614, marketValue=2.648896010592259E9, orderId=1598999449201-48)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip4, quantity=114651985, price=20.737410645708614, marketValue=2.377585294290624E9, orderId=1598999448828-11)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip4, quantity=124071149, price=20.737410645708614, marketValue=2.5729143660979E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip4, quantity=120417926, price=20.737410645708614, marketValue=2.497155980566552E9, orderId=1598999449301-53)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip4, quantity=112190866, price=20.737410645708614, marketValue=2.3265480589396687E9, orderId=1598999448827-8)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip4, quantity=118818966, price=20.737410645708614, marketValue=2.46399769044049E9, orderId=1598999448789-1)
+[INFO] 2020-09-01 18:15:05,188 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip4, quantity=116715967, price=20.737410645708614, marketValue=2.4203869365899754E9, orderId=1598999448903-21)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:15:05
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip2, quantity=113225038, price=35.598328011977124, marketValue=4.0306220418925743E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip2, quantity=109851386, price=35.598328011977124, marketValue=3.9105256713983116E9, orderId=1598999449001-30)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip2, quantity=115623537, price=35.598328011977124, marketValue=4.1160045960309734E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip2, quantity=116480699, price=35.598328011977124, marketValue=4.1465181300663757E9, orderId=1598999448825-2)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip2, quantity=111708083, price=35.598328011977124, marketValue=3.9766209802231655E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip2, quantity=114208122, price=35.598328011977124, marketValue=4.0656181885879006E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip2, quantity=114842690, price=35.598328011977124, marketValue=4.088207748397805E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip2, quantity=117480029, price=35.598328011977124, marketValue=4.182092607198585E9, orderId=1598999448903-18)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip2, quantity=108518444, price=35.598328011977124, marketValue=3.863075164861371E9, orderId=1598999448901-14)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip2, quantity=105641719, price=35.598328011977124, marketValue=3.760668564711116E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip2, quantity=115699003, price=35.598328011977124, marketValue=4.1186910594527254E9, orderId=1598999448826-5)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip2, quantity=123321711, price=35.598328011977124, marketValue=4.390046719176248E9, orderId=1598999449001-31)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip2, quantity=113832522, price=35.598328011977124, marketValue=4.052247456586602E9, orderId=1598999449101-36)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip2, quantity=107870018, price=35.598328011977124, marketValue=3.8399922834218764E9, orderId=1598999448825-3)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip2, quantity=117868857, price=35.598328011977124, marketValue=4.195934233882826E9, orderId=1598999448902-17)
+[INFO] 2020-09-01 18:15:05,298 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip2, quantity=109569871, price=35.598328011977124, marketValue=3.90050420808802E9, orderId=1598999448825-2)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Timer Invoked at 2020-09-01 18:15:05
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S1, cusip=Cusip3, quantity=115957018, price=2.9033351966516374, marketValue=3.366620916581675E8, orderId=1598999449201-44)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S1, cusip=Cusip3, quantity=123024416, price=2.9033351966516374, marketValue=3.5718111702031285E8, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S2, cusip=Cusip3, quantity=131387880, price=2.9033351966516374, marketValue=3.814630564174417E8, orderId=1598999448826-4)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S4, cusip=Cusip3, quantity=117792833, price=2.9033351966516374, marketValue=3.419920779622085E8, orderId=1598999449000-25)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S1, cusip=Cusip3, quantity=130001591, price=2.9033351966516374, marketValue=3.7743819477101076E8, orderId=1598999449001-27)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S4, cusip=Cusip3, quantity=124677587, price=2.9033351966516374, marketValue=3.6198082657069665E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S3, cusip=Cusip3, quantity=119954529, price=2.9033351966516374, marketValue=3.4826820604346955E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S4, cusip=Cusip3, quantity=133890738, price=2.9033351966516374, marketValue=3.8872969214106286E8, orderId=1598999448903-20)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S4, cusip=Cusip3, quantity=102804874, price=2.9033351966516374, marketValue=2.984770090715368E8, orderId=1598999449101-39)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S2, cusip=Cusip3, quantity=120969788, price=2.9033351966516374, marketValue=3.5121584323188686E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S3, cusip=Cusip3, quantity=116741365, price=2.9033351966516374, marketValue=3.389393139096556E8, orderId=1598999448827-9)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC3, subAccount=S2, cusip=Cusip3, quantity=128018506, price=2.9033351966516374, marketValue=3.7168063429255885E8, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC1, subAccount=S3, cusip=Cusip3, quantity=131829952, price=2.9033351966516374, marketValue=3.8274653961449593E8, orderId=1598999448903-19)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S3, cusip=Cusip3, quantity=122085179, price=2.9033351966516374, marketValue=3.5445419718021536E8, orderId=1598999448900-13)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC2, subAccount=S2, cusip=Cusip3, quantity=118537069, price=2.9033351966516374, marketValue=3.441528445356237E8, orderId=1598999449202-51)
+[INFO] 2020-09-01 18:15:05,407 org.apache.flink.training.assignments.functions.PositionPriceCoProcess onTimer - Calculating Mkt Value Position(account=ACC4, subAccount=S1, cusip=Cusip3, quantity=129797205, price=2.9033351966516374, marketValue=3.768447937035079E8, orderId=1598999448826-4)

@@ -27,15 +27,16 @@ public class PositionPriceCoProcess extends CoProcessFunction<Position, Price, P
     //hold the most recent price
     private ValueState<Price> priceState;
     //hold the most recent evaluation timestamp
-    private ValueState<Long> lastEvaluationState;
-    private ListState<Position> positionListState;
+    private ValueState<Long> lastTimer;
+    // private ListState<Position> positionListState;
+
 
 
     @Override
     public void open(Configuration parameters) throws Exception {
         priceState = getRuntimeContext().getState(new ValueStateDescriptor<>("priceState", Price.class));
-        lastEvaluationState = getRuntimeContext().getState(new ValueStateDescriptor<>("lastEvaluationState", Long.class));
-        positionListState = getRuntimeContext().getListState((new ListStateDescriptor<>("saved Position List", Position.class)));
+        lastTimer = getRuntimeContext().getState(new ValueStateDescriptor<>("lastEvaluationState", Long.class));
+       // positionListState = getRuntimeContext().getListState((new ListStateDescriptor<>("saved Position List", Position.class)));
 
 
         MapStateDescriptor<String, Position> mdescription =
@@ -48,30 +49,8 @@ public class PositionPriceCoProcess extends CoProcessFunction<Position, Price, P
 
     @Override
     public void processElement1(Position position, Context context, Collector<Position> collector) throws Exception {
-        /**
-        final Price price = priceState.value();
-        final Long timer = lastEvaluationState.value();
-        if (price != null) {
-            priceState.clear();
-            if( timer != null) {
-                context.timerService().deleteProcessingTimeTimer(timer);
-            }
-
-            collector.collect(enrichPositionByActWithPrice(position, price.getPrice().doubleValue()));
-        }  else {
-            positionListState.add(position);
-        }*/
         String positionKey = position.getAccount() + position.getSubAccount() + position.getCusip();
-        Position oldPos = cachedPositionState.get(positionKey);
-        if( oldPos != null){
-            position.setQuantity(position.getQuantity() + oldPos.getQuantity());
-        }
         cachedPositionState.put(positionKey,position);
-
-
-        // positionListState.add(position);
-
-
     }
 
 
@@ -83,38 +62,35 @@ public class PositionPriceCoProcess extends CoProcessFunction<Position, Price, P
     }
 
     private void setupAlarm(Context context) throws Exception {
-        if( null == lastEvaluationState.value()) {
+        if( null == lastTimer.value() || 0 == lastTimer.value()) {
             long currentTime = context.timerService().currentProcessingTime();
             long timeoutTime = currentTime + 60000;
             context.timerService().registerProcessingTimeTimer(timeoutTime);
-            lastEvaluationState.update(timeoutTime);
+            lastTimer.update(timeoutTime);
         }
     }
 
     @Override
     public void onTimer(long timestamp, OnTimerContext ctx, Collector<Position> out) throws Exception {
-            Timestamp timestamp2 = new Timestamp(timestamp);
+        Timestamp timestamp2 = new Timestamp(timestamp);
+
+        if (lastTimer.value() == timestamp) {
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-            LOG.info("Timer Invoked at {}" , fmt.format(timestamp2.toLocalDateTime()));
-            lastEvaluationState.clear();
+            LOG.info("Timer Invoked at {}", fmt.format(timestamp2.toLocalDateTime()));
+            lastTimer.clear();
             final Price price = priceState.value();
-            //Iterable<Position> positionList=positionListState.get();
-            Iterable<Position> positionList=cachedPositionState.values();
-
-            if( (null != price) && (null != positionList) ){
+            Iterable<Position> positionList = cachedPositionState.values();
+            if ((null != price) && (null != positionList)) {
                 priceState.clear();
                 cachedPositionState.clear();
-                    for(Position pos: positionList){
-
-                        out.collect(enrichPositionByActWithPrice(pos,price.getPrice().doubleValue()));
-                        LOG.info("Calculating Mkt Value {}" , pos);
-                    }
+                for (Position pos : positionList) {
+                    out.collect(enrichPositionByActWithPrice(pos, price.getPrice().doubleValue()));
+                    LOG.info("Calculating Mkt Value {}", pos);
+                }
             }
-
+        }
     }
     private Position enrichPositionByActWithPrice(final Position position, final double price) {
-
         position.setPrice(price);
         position.setMarketValue(position.getQuantity() * price);
         position.setTimestamp(System.currentTimeMillis());
